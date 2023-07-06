@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "tiendaRopa": {
+      "i18n": {
+        "sourceLocale":"en-US",
+        "locales": {
+          "es-PR":"src/locale/messages.es.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize":[
+              "es-PR"
+            ],
             "outputPath": "dist/tienda-ropa",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -93,9 +102,15 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+          
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }

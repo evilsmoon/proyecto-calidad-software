@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<section >
+    <div class="containe mt-5 py-4 py-xl-5  ">
+        <div class="row ">
+            <p-carousel [value]="products" [circular]="true"  [numVisible]="4" [numScroll]="3" [responsiveOptions]="responsiveOptions">
+                <ng-template let-product pTemplate="item">
+                    <div class="border border-1 surface-border rounded m-2 text-center py-5 px-3">
+                        <div class="mb-3">
+                            <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.image }}" [alt]="product.name" class="border border-0" />
+                        </div>
+                        <div>
+                            <h4 class="mb-1">{{ product.name }}</h4>
+                            <h6 class="mt-0 mb-3">{{ '$' + product.price }}</h6>
+                            <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product.inventoryStatus)"></p-tag>
+          
+                            <div class="d-flex justify-content-center gap-2  mt-5">
+                                <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
+                                <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+          </p-carousel>
+        </div>
+      </div>
+</section>
