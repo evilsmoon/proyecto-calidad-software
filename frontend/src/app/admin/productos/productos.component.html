@@ -1,0 +1,42 @@
+<div class="container-lg">
+
+    <div class="row bg-danger my-2 d-flex justify-content-end">
+        <div class="col-auto">
+            <a type="button" class="btn btn-primary rounded text-center align-items-center fs-6"
+                (click)="showDialog()"><i class="pi pi-plus p-1"></i>&nbsp; Agregar</a>
+            <p-dialog header="Agregar Producto" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
+                [draggable]="false" [resizable]="false">
+
+                <form class="modal-body" autocomplete="off" [formGroup]="formularioCliente">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
+                    </div>
+
+
+                </form>
+            </p-dialog>
+
+        </div>
+    </div>
+
+    <div class="card">
+
+    </div>
+</div>

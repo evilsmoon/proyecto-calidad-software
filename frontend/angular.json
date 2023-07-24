@@ -3,13 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tiendaRopa": {
-      "i18n": {
-        "sourceLocale":"en-US",
-        "locales": {
-          "es-PR":"src/locale/messages.es.xlf"
-        }
-      },
+    "frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,10 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize":[
-              "es-PR"
-            ],
-            "outputPath": "dist/tienda-ropa",
+            "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -39,9 +30,14 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -74,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tiendaRopa:build:production"
+              "browserTarget": "frontend:build:production"
             },
             "development": {
-              "browserTarget": "tiendaRopa:build:development"
+              "browserTarget": "frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tiendaRopa:build"
+            "browserTarget": "frontend:build"
           }
         },
         "test": {
