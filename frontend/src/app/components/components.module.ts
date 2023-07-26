@@ -5,14 +5,14 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
     PrimeNgModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
   ]
 })
 export class ComponentsModule { }

@@ -3,50 +3,18 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav mx-auto">
                 <!-- <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li> -->
-                <li class="nav-item"><a class="nav-link" href="" i18n>Men</a></li>
-                <li class="nav-item"><a class="nav-link" href="" i18n>Woman</a></li>
-                <li class="nav-item"><a class="nav-link" href="" i18n>Boy</a></li>
-                <li class="nav-item"><a class="nav-link" href="" i18n>Girl</a></li>
+                <li class="nav-item"><a class="nav-link" i18n>Men</a></li>
+                <li class="nav-item"><a class="nav-link" i18n>Woman</a></li>
+                <li class="nav-item"><a class="nav-link" i18n>Boy</a></li>
+                <li class="nav-item"><a class="nav-link" i18n>Girl</a></li>
             </ul>
-            <a class="btn btn-primary mx-1 shadow" role="button" href="/auth/register" i18n>Sign In</a>
-            <a class="btn btn-primary mx-1 shadow" role="button" href="/auth/login" i18n>Log In</a>
+            <button class="btn btn-primary mx-1 shadow" (click)="navigateToRegister()" i18n>Sign In</button>
+            <button class="btn btn-primary mx-1 shadow" (click)="navigateToLogin()" i18n>Log In</button>
 
-
-            <a type="button"  (click)="sidebarVisible2 = true" >
+            <a type="button"  (click)="moveToShoppingCart()" >
                 <!-- <i class="pi pi-shopping-cart text-2xl" pBadge value="2"></i> -->
-                <i class="pi pi-shopping-cart fs-2" pBadge value="2" severity="danger"></i>
+                <i class="pi pi-shopping-cart fs-2" pBadge value="{{myStoreLength}}" severity="danger"></i>
             </a>
         </div>
     </div>
 </nav>
-
-<p-sidebar [(visible)]="sidebarVisible2" position="right"  styleClass="w-25">
-    <ng-template pTemplate="header">Header Content</ng-template>
-    <ng-template pTemplate="content">
-        <p-dataView #dv [value]="products">
-            <ng-template let-product pTemplate="listItem">
-                <div class="row-auto">
-                    <div class="d-flex flex-row justify-content-between xl:flex-row xl:align-items-center p-2 gap-4">
-                        <img class="w-50 shadow-2 border border-round" 
-                        [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" 
-                        [alt]="product.name" />
-                        <div class="w-50 flex flex-column sm:flex-row justify-content-between align-items-center gap-4">
-                            <div class="flex flex-column align-items-center sm:align-items-start gap-3">
-                                <div class="w-100 text-2xl font-bold text-900">{{ product.name }}</div>
-                    
-                            </div>
-                            <div class="h-25"></div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-2xl font-semibold">{{'$'+ product.price }}</span>
-                                <a type="button" class="btn btn-danger"><i class="pi pi-cart-plus"></i></a>
-                <!--                 <button pButton icon="pi pi-cart-plus" class="md:align-self-end mb-2 p-button-rounded" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-        </p-dataView>
-        
-    </ng-template>
-    <ng-template pTemplate="footer">Footer Content</ng-template>
-</p-sidebar>

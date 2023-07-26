@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
 
+<app-navbar></app-navbar>
 <main class="page catalog-page">
     <section class="clean-block clean-catalog dark">
         <div class="container">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <p-dataView #dv [value]="products"  layout="list">
+                        <p-dataView #dv [value]="productos"  layout="list">
                             <ng-template let-product  pTemplate="listItem">
                                 <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
                                     <div class="p-4 border-1 surface-border surface-card border-round">
@@ -76,7 +76,13 @@
                                         </div>
                                         <div class="flex align-items-center justify-content-between">
                                             <span class="text-2xl font-semibold">{{ '$' + product.price }}</span>
-                                            <button pButton icon="pi pi-shopping-cart" class="p-button-rounded" [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></button>
+                                            <button 
+                                                pButton 
+                                                icon="pi pi-shopping-cart" 
+                                                class="p-button-rounded" 
+                                                [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
+                                                (click)="addMyCart(product)"
+                                                ></button>
                                         </div>
                                     </div>
                                 </div>

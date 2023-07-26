@@ -9,6 +9,8 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ComponentsModule } from '../components/components.module';
 import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten-password.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten
     RegisterPageComponent,
     AuthLayoutComponent,
     ForgottenPasswordComponent,
+    ShoppingCartComponent,
     
   ],
   imports: [
@@ -23,6 +26,7 @@ import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten
     ComponentsModule,
     AuthRoutingModule,
     ReactiveFormsModule,
+    PrimeNgModule
   ]
 })
 export class AuthModule { }
