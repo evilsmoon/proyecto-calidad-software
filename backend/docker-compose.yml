@@ -1,0 +1,50 @@
+version: '3.3'
+services:
+  node:
+    container_name: backend_Calidad
+    build: .
+
+    environment:
+      - PORT=${NODE_PORT}
+      - DB_CONN=mongodb://${MDB_ROOT_USER}:${MDB_ROOT_PASSWORD}@20.20.20.20:${MDB_PORT}/?authMechanism=DEFAULT
+      - SECRET_JWT_SEED=${NODE_JWT}
+
+    ports:
+      - "3000:${NODE_PORT}"
+
+    volumes:
+      - ./proyecto:/app
+      
+    networks:
+      red_prueba:
+        ipv4_address: 20.20.20.10
+    hostname: nodeDockerprueba
+    depends_on:
+      - db_mongo
+  
+  db_mongo:
+    container_name: db_Calidad
+    image: mongo
+
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MDB_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MDB_ROOT_PASSWORD} 
+      - MONGO_DATA_DIR=${MDB_DATA_DIR}
+      - MONGO_TEST_DATA_DIR=${MDB_TEST_DATA_DIR}
+    
+    volumes:
+      - ./mongo:/data/db
+
+    ports:
+      - "27017:${MDB_PORT}"
+    
+    networks:
+      red_prueba:
+        ipv4_address: 20.20.20.20
+    hostname: db_Calidad
+
+networks:
+    red_prueba:
+        ipam:
+            config:
+              - subnet: 20.20.20.0/16
