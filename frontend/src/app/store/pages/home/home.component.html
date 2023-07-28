@@ -9,7 +9,7 @@
             </div>
             <div class="content">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="d-none d-md-block">
                             <div class="filters">
                                 <div class="filter-item">
@@ -57,33 +57,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <p-dataView #dv [value]="productos"  layout="list">
-                            <ng-template let-product  pTemplate="listItem">
-                                <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
-                                    <div class="p-4 border-1 surface-border surface-card border-round">
-                                        <div class="flex flex-wrap align-items-center justify-content-between gap-2">
-                                            <span class="flex align-items-center gap-2">
-                                                <i class="pi pi-tag"></i>
-                                                <span class="font-semibold">{{ product.category }}</span>
-                                            </span>
-                                            <!-- <p-tag [value]="product.inventoryStatus" [severity]="getSeverity(product)"></p-tag> -->
-                                        </div>
-                                        <div class="flex flex-column align-items-center gap-3 py-5">
-                                            <img class="w-9 shadow-2 border-round" [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" />
-                                            <div class="text-2xl font-bold">{{ product.name }}</div>
-                                            <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
-                                        </div>
-                                        <div class="flex align-items-center justify-content-between">
-                                            <span class="text-2xl font-semibold">{{ '$' + product.price }}</span>
-                                            <button 
-                                                pButton 
-                                                icon="pi pi-shopping-cart" 
-                                                class="p-button-rounded" 
-                                                [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"
-                                                (click)="addMyCart(product)"
-                                                ></button>
-                                        </div>
+                    <div class="col-md-10 px-2">
+                        <p-dataView #dv [value]="productos"  layout="grid" styleClass="ui-dataview-item" [rows]="6" [paginator]="true">
+                            <ng-template let-product  pTemplate="gridItem" >
+
+                                <div class="card mx-3 my-2 gap-2" style="width: 19.5rem;">
+                                    <img class="h-26rem shadow-2 border-round card-img-top" [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
+                                    <div class="card-body ">
+                                        <h5 class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-6 fw-light" style="width: 19rem;height: 2.5rem;">{{product.name}}</h5>
+                                        <p class="card-text text-start pr-4 pl-2 mt-2">$ {{product.size[0].price}}</p>
+                                        <button 
+                                            type="button" 
+                                            class="btn btn-outline-danger text-uppercase" 
+                                            (click)="addMyCart(product)"
+                                            style="width: 18rem;">Add to cart</button>
                                     </div>
                                 </div>
                             </ng-template>

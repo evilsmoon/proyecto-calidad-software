@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatitoService } from 'src/app/services/patito.service';
 import { ProductService } from 'src/app/services/product.service';
 // import { OverlayPanel } from "primeng/overlaypanel";
 @Component({
@@ -27,16 +28,19 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(private productoServ:ProductService) { }
+  constructor(
+    private productoServ : ProductService,
+    private patitoServ   : PatitoService,
+    ) { }
 
   ngOnInit(): void {
-    this.productoServ.getProducts().then(resp=>
-      this.productos = resp
-      );
+    this.patitoServ.get().subscribe(
+      resp=>( this.productos =resp)
+    )
 
   }
   addMyCart(producto:any){
-    console.log(producto);
+    console.log(producto);  
 
     this.productoServ.addProducto(producto)
   }

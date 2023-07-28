@@ -27,6 +27,9 @@ export class NavbarComponent implements OnInit {
 !Navigation Start
 */
 
+navigateToHome(): void {
+  this.router.navigate(['/'], { replaceUrl: true });
+}
 navigateToRegister(): void {
   this.router.navigate(['/auth/register'], { replaceUrl: true });
 }
