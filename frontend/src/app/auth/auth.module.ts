@@ -11,6 +11,7 @@ import { ComponentsModule } from '../components/components.module';
 import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten-password.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
     AuthLayoutComponent,
     ForgottenPasswordComponent,
     ShoppingCartComponent,
+    PaymentPageComponent,
     
   ],
   imports: [

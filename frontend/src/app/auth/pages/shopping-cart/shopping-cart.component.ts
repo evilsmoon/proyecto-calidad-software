@@ -33,6 +33,12 @@ export class ShoppingCartComponent implements OnInit{
     generateNumbersArray(max: number): number[] {
       return Array.from({ length: max }, (_, index) => index + 1);
     }
+
+    navigateToPaymentPage(): void {
+      this.router.navigate(['/auth/payment-page'], { replaceUrl: true });
+    }
+
+
 /*   ngOnInit(): void {
     console.log("ngOnInit");
 

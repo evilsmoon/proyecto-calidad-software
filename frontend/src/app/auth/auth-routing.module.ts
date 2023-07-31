@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten-password.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterPageComponent },
       { path: 'forgotten-password', component: ForgottenPasswordComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'payment-page', component: PaymentPageComponent },
       { path: '**', redirectTo: 'login' },
     ]
   }
