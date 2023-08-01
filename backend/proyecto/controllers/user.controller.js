@@ -25,7 +25,7 @@ const createUser = async (req,res = response) => {
         const token = await generarJWT( Dbusuario.id, Dbusuario.name, Dbusuario.role );
 
         //crear usuario de DB
-        await Dbusuario.save();
+        const resp = await Dbusuario.save();
         
         //respuesta exitosa
         return res.status(201).json({
@@ -107,7 +107,7 @@ const updatePassword = async( req, res ) => {
         uid: id,
         name: Dbusuario.name,
         token,
-        acceso: Dbusuario.role
+        access: Dbusuario.role
     })
 }
 
@@ -138,10 +138,9 @@ const loginUser =  async (req,res = response) => {
             uid: usuario.id,
             name: usuario.name,
             token,
-            acceso: usuario.role
+            access: usuario.role
         })
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             ok: false,
             msg: 'Hable con el administrador'
@@ -155,9 +154,9 @@ const renewToken = async (req,res = response) => {
     return res.json({
         ok: true,
         uid,
-        acceso: role,
         name,
-        token
+        token,
+        access: role,
     })
 }
 

@@ -153,8 +153,11 @@
 
 
                 <div class="card-footer flex justify-content-between">
-                    <button type="button" class=" my-2 btn bg-yellow-300 text-center rounded  mt-2 shadow">Use this
-                        Place Your Order and Pay</button>
+                    <button 
+                      type="button" 
+                      (click)="handlePayment()"
+                      class=" my-2 btn bg-yellow-300 text-center rounded mt-2 shadow">
+                      Use this Place Your Order and Pay</button>
                     <p class="text-red-600 text-left fs-4 fw-medium">Order total:$44.16</p>
                 </div>
             </div>

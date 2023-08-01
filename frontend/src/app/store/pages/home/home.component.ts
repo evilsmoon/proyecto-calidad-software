@@ -44,7 +44,9 @@ export class HomeComponent implements OnInit {
 
     this.productoServ.addProducto(producto)
   }
-
+  updatePrice(item:any){
+    console.log(item);
+  }
 /*   getSeverity(status: string) {
     switch (status) {
       case 'INSTOCK':

@@ -1,16 +1,28 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, inject ,signal,computed} from '@angular/core';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { environment } from 'src/environments/environments';
+import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
+
+import { AuthStatus, CheckTokenResponse, LoginResponse, User } from '../auth/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PatitoService {
-  url: string = 'http://localhost:3000/api';
-  constructor(private http: HttpClient) {}
+
+  
+  private readonly baseUrl: string = environment.baseUrl;
+  private http = inject( HttpClient );
+
 
   get(): Observable<any> {
-    return this.http.get(this.url + '/product');
+    const url =  `${this.baseUrl}/product`
+    return this.http.get(url);
   }
-  getProductos() {}
+
+/*   url: string = 'http://localhost:3000/api';
+  constructor(private http: HttpClient) {}
+
+
+  getProductos() {} */
 }

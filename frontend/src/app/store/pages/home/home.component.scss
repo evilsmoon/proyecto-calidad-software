@@ -1,0 +1,14 @@
+.card-custom {
+
+    button:last-child{
+        display: none;
+    }
+}
+
+.card-custom:hover {
+
+    button:last-child{
+        display: inline-block;
+        --animate-duration: 1s;
+    }
+}

@@ -1,18 +1,95 @@
-    <nav class="navbar navbar-light bg-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" (click)="navigateToHome()"><span>Store Duck</span></a>
-        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="mx-auto">
+<nav
+  class="navbar navbar-light bg-light navbar-expand-md fixed-top navbar-shrink py-3"
+>
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" (click)="navigateToHome()"
+      ><span>Store Duck</span></a
+    >
+    <button
+      data-bs-toggle="collapse"
+      class="navbar-toggler"
+      data-bs-target="#navcol-1"
+    >
+      <span class="visually-hidden">Toggle navigation</span
+      ><span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navcol-1">
+      <ul class="mx-auto"></ul>
+      <button
+        class="btn btn-primary mx-1 shadow"
+        *ngIf="!getAuthStatus()"
+        (click)="navigateToRegister()"
+        i18n
+      >
+        Sign In
+      </button>
+      <button
+        class="btn btn-primary mx-1 shadow"
+        *ngIf="!getAuthStatus()"
+        (click)="navigateToLogin()"
+        i18n
+      >
+        Log In
+      </button>
 
-            </ul>
-            <button class="btn btn-primary mx-1 shadow" (click)="navigateToRegister()" i18n>Sign In</button>
-            <button class="btn btn-primary mx-1 shadow" (click)="navigateToLogin()" i18n>Log In</button>
-
-            <a type="button"  (click)="moveToShoppingCart()" >
-                <!-- <i class="pi pi-shopping-cart text-2xl" pBadge value="2"></i> -->
-                <i class="pi pi-shopping-cart fs-2" pBadge value="{{myStoreLength}}" severity="danger"></i>
-            </a>
+      <button
+        type="button"
+        class="btn mx-1 text-black"
+        (click)="moveToShoppingCart()"
+      >
+        <!-- <i class="pi pi-shopping-cart text-2xl" pBadge value="2"></i> -->
+        <i class="pi pi-shopping-bag fs-3 mb-0">
+          <!-- pBadge badgeClass="" value="{{myStoreLength}}"  severity="danger" -->
+        </i>
+        <p-badge
+          styleClass="mb-0 animate__animated animate__heartBeat bg-red-500"
+          value="{{ myStoreLength }}"
+        ></p-badge>
+      </button>
+      <div class="d-sm-block topbar-divider"  *ngIf="getAuthStatus()"></div>
+      <li class="nav-item dropdown no-arrow"  *ngIf="getAuthStatus()"style="list-style-type: none;">
+        <div class="nav-item dropdown no-arrow">
+          <a
+            class="dropdown-toggle nav-link"
+            aria-expanded="false"
+            data-bs-toggle="dropdown"
+            href="#"
+            ><span class="d-none d-lg-inline me-2 text-gray-600 small"
+              >Valerie Luna</span
+            ><img
+              class="border rounded-circle img-profile"
+              src="assets/img/avatars/avatar1.jpeg"
+          /></a>
+          <div
+            class="dropdown-menu shadow dropdown-menu-end animated--grow-in"
+          >
+            <a class="dropdown-item" href="#"
+              ><i
+                class="pi pi-user fa-sm fa-fw me-2 text-gray-400"
+              ></i
+              >&nbsp;Profile</a
+            ><a class="dropdown-item" href="#"
+              ><i
+                class="pi pi-wrench fa-sm fa-fw me-2 text-gray-400"
+              ></i
+              >&nbsp;Settings</a
+            ><a class="dropdown-item" href="#"
+              ><i
+                class="pi pi-list fa-sm fa-fw me-2 text-gray-400"
+              ></i
+              >&nbsp;Activity log</a
+            >
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"
+              ><i
+                class="pi pi-sign-out fa-sm fa-fw me-2 text-gray-400"
+                (click)="onLogout()"
+              ></i
+              >&nbsp;Logout</a
+            >
+          </div>
         </div>
+      </li>
     </div>
+  </div>
 </nav>

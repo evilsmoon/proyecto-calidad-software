@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PatitoService } from 'src/app/services/patito.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { PatitoService } from 'src/app/services/patito.service';
 })
 export class PaymentPageComponent implements OnInit {
   products: any[] = [];
+  startTime: Date | null = null;
+  timerInterval: any;
+
   constructor(
     private fb: FormBuilder,
     private patitoServ:PatitoService,
@@ -23,10 +26,37 @@ export class PaymentPageComponent implements OnInit {
   );
 
   ngOnInit(): void {
+    this.startTime = new Date();
+    this.timerInterval = setInterval(() => {}, 1000);
+
     this.patitoServ.get().subscribe(
       resp=>( this.products =resp.slice(0,2))
     )
   }
+  ngOnDestroy() {
+    clearInterval(this.timerInterval);
+  }
+
+  getTimeElapsed(): number {
+    const currentTime = new Date();
+    return Math.floor((currentTime.getTime() - this.startTime!.getTime()) / 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.timerInterval);
+  }
+
+
+
+  handlePayment(){
+    console.log(this.getTimeElapsed());
+    clearInterval(this.timerInterval)
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    $event.returnValue = true;
+  }
+
 
   generateNumbersArray(max: number): number[] {
     return Array.from({ length: max }, (_, index) => index + 1);

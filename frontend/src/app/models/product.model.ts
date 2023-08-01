@@ -5,6 +5,8 @@ export interface Product {
     name: string;
     size: Size[];
     tags: string[];
+    currentPrice :number;
+    currentQty:number;
 }
 
 export interface Size {

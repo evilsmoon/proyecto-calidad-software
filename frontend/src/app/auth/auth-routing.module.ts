@@ -6,6 +6,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { ForgottenPasswordComponent } from './pages/forgotten-password/forgotten-password.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
+import { isAuthenticatedGuard } from './guards/is-authenticated.guard';
 
 const routes: Routes = [
 
@@ -15,9 +16,9 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginPageComponent },
       { path: 'register', component: RegisterPageComponent },
-      { path: 'forgotten-password', component: ForgottenPasswordComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'payment-page', component: PaymentPageComponent },
+      { path: 'forgotten-password', component: ForgottenPasswordComponent ,canActivate:[isAuthenticatedGuard]},
+      { path: 'shopping-cart', component: ShoppingCartComponent ,canActivate:[isAuthenticatedGuard]},
+      { path: 'payment-page', component: PaymentPageComponent,canActivate:[isAuthenticatedGuard] },
       { path: '**', redirectTo: 'login' },
     ]
   }

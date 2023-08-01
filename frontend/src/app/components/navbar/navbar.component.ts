@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Location} from '@angular/common';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthStatus } from 'src/app/auth/interfaces';
 
 @Component({
   selector:'app-navbar',
@@ -15,13 +16,9 @@ export class NavbarComponent implements OnInit {
   myStoreLength : number = 0;
   private sub$!: Subscription;
   
-  constructor(
-    private productoServ : ProductService,
-    private location     : Location,
-    private router       : Router,
-    ) { 
-
-    }
+  private authService  = inject( AuthService );
+  private productoServ = inject( ProductService );
+  private router       = inject( Router );
 
 /* 
 !Navigation Start
@@ -38,6 +35,12 @@ navigateToLogin(): void {
   this.router.navigate(['/auth/login'], { replaceUrl: true });
 }
 
+getAuthStatus():boolean{
+  if ( this.authService.authStatus() === AuthStatus.authenticated ) {
+    return true;
+  }
+  return false;
+}
 
 /* 
 !Navigation End
@@ -79,18 +82,9 @@ navigateToLogin(): void {
   ];
 
 
-
-/*   getSeverity(status: string) {
-    switch (status) {
-      case 'INSTOCK':
-        return 'success';
-      case 'LOWSTOCK':
-        return 'warning';
-      case 'OUTOFSTOCK':
-        return 'danger';
-    }
+  onLogout() {
+    this.authService.logout();
   }
- */
 
 
 
