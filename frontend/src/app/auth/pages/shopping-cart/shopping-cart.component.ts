@@ -56,7 +56,7 @@ export class ShoppingCartComponent implements OnInit{
     navigateToPaymentPage(): void {
 
       console.log(this.products);
-      // this.router.navigate(['/auth/payment-page'], );
+      this.router.navigate(['/auth/payment-page'], );
     }
 
     onChangeQuantity(event: any,product: Product, ) {
