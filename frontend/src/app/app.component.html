@@ -1,2 +1,11 @@
+<div class="position-relative w-100" *ngIf="!finishedAuthCheck()" style="height: 900px;">
+  <div class="position-absolute top-50 start-50 translate-middle">
+      <p-progressSpinner styleClass=" w-4rem h-4rem"
+                         strokeWidth="8" 
+                         fill="var(--surface-ground)" 
+                         animationDuration=".5s">
+      </p-progressSpinner>
+  </div>
+</div>
 
-<router-outlet></router-outlet>
+<router-outlet *ngIf="finishedAuthCheck()" />

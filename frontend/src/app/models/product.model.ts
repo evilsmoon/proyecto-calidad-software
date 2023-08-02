@@ -3,15 +3,10 @@
 export interface Product {
     _id:  string;
     name: string;
-    size: Size[];
+    size: string;
+    price: number;
+    qty:   number;
     tags: string[];
     currentPrice :number;
     currentQty:number;
-}
-
-export interface Size {
-    _id:   string;
-    value: string;
-    price: number;
-    qty:   number;
 }

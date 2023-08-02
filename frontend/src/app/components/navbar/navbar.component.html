@@ -55,7 +55,7 @@
             data-bs-toggle="dropdown"
             href="#"
             ><span class="d-none d-lg-inline me-2 text-gray-600 small"
-              >Valerie Luna</span
+              >{{user()?.name}}</span
             ><img
               class="border rounded-circle img-profile"
               src="assets/img/avatars/avatar1.jpeg"
@@ -80,10 +80,14 @@
               >&nbsp;Activity log</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"
+            <a  
+              class="dropdown-item"
+              type="button"
+              (click)="onLogout()"
               ><i
+               
                 class="pi pi-sign-out fa-sm fa-fw me-2 text-gray-400"
-                (click)="onLogout()"
+        
               ></i
               >&nbsp;Logout</a
             >

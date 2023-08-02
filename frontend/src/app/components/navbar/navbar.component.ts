@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,6 +16,8 @@ export class NavbarComponent implements OnInit {
   myStoreLength : number = 0;
   private sub$!: Subscription;
   
+  public user = computed(() => this.authService.currentUser() );
+
   private authService  = inject( AuthService );
   private productoServ = inject( ProductService );
   private router       = inject( Router );
@@ -46,7 +48,6 @@ getAuthStatus():boolean{
 !Navigation End
 */
   ngOnInit(): void {
-    console.log("ngOnInit");
     this.productoServ.myCart$
       .subscribe(products => {
         this.myStoreLength =  products.length;
@@ -61,29 +62,12 @@ getAuthStatus():boolean{
 
   moveToShoppingCart(){
 
-    this.router.navigate(['/auth/shopping-cart'])
+    this.router.navigate(['/auth/shopping-cart'],{ replaceUrl: true })
   }
-  responsiveOptions: any[] = [
-    {
-      breakpoint: '1199px',
-      numVisible: 1,
-      numScroll: 1
-    },
-    {
-      breakpoint: '991px',
-      numVisible: 2,
-      numScroll: 1
-    },
-    {
-      breakpoint: '767px',
-      numVisible: 1,
-      numScroll: 1
-    }
-  ];
-
 
   onLogout() {
     this.authService.logout();
+    this.router.navigate(['/'], { replaceUrl: true });
   }
 
 

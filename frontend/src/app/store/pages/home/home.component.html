@@ -38,13 +38,13 @@
                         [paginator]="true">
                         <ng-template let-product  pTemplate="gridItem" >
                             <div class="card card-custom mx-3 my-2 gap-2 shadow-2 animate__animated animate__slideInUp" style="width: 19.5rem;">
-                                <img class="h-26rem  border-round card-img-top" [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
+                                <img class="h-20rem  border-round card-img-top" [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
                                 <div class="card-body h-13rem ">
                                     <h5 class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-6 fw-light" style="width: 19rem;height: 2.5rem;">{{product.name}}</h5>
-                                    <button class="btn active fs-6 mx-1" *ngFor="let item of product.size" (click)="updatePrice(item)">
-                                        {{item.value}}
+                                    <button class="btn active fs-6 mx-1" >
+                                        {{product.size}}
                                     </button>
-                                    <p class="card-text text-start text-black fw-bold pr-4 pl-2 mt-2">${{product.size[0].price}}</p>
+                                    <p class="card-text text-start text-black fw-bold pr-4 pl-2 mt-2">${{product.price}}</p>
                                     <button 
                                         type="button" 
                                         class="btn btn-outline-danger text-uppercase animate__animated animate__fadeInUp"
@@ -57,5 +57,9 @@
                 </div>
             </div>
         </div>
+ 
     </section>
+    <p-toast ></p-toast>
 </main>
+
+<app-footer/>

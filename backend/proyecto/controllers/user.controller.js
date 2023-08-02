@@ -22,10 +22,10 @@ const createUser = async (req,res = response) => {
         Dbusuario.password = bcrypt.hashSync( password, salt );
 
         //jsonwebtoken
-        const token = await generarJWT( Dbusuario.id, Dbusuario.name, Dbusuario.role );
+        const token = await generarJWT( Dbusuario.id, Dbusuario.name );
 
         //crear usuario de DB
-        const resp = await Dbusuario.save();
+        await Dbusuario.save();
         
         //respuesta exitosa
         return res.status(201).json({
@@ -33,7 +33,6 @@ const createUser = async (req,res = response) => {
             uid: Dbusuario.id,
             name,
             token,
-            acceso: Dbusuario.role
         })
     } catch (error) {
         return res.status(500).json({
@@ -64,7 +63,7 @@ const updateUser = async( req, res ) => {
     const Dbusuario = req.body
 
     //jsonwebtoken
-    const token = await generarJWT( id, Dbusuario.name, Dbusuario.role );
+    const token = await generarJWT( id, Dbusuario.name );
     //actualizar usuario de DB
     await Usuario.findByIdAndUpdate(id,{$set:Dbusuario},{new: true})
     //respuesta exitosa
@@ -73,7 +72,6 @@ const updateUser = async( req, res ) => {
         uid: id,
         name: Dbusuario.name,
         token,
-        acceso: Dbusuario.role
     })
 }
 
@@ -96,7 +94,7 @@ const updatePassword = async( req, res ) => {
     Dbusuario.password = bcrypt.hashSync( Dbusuario.password, salt );
 
     //jsonwebtoken
-    const token = await generarJWT( id, Dbusuario.name, Dbusuario.role );
+    const token = await generarJWT( id, Dbusuario.name );
 
     //actualizar usuario de DB
     await Usuario.findByIdAndUpdate(id,{$set:Dbusuario},{new: true})
@@ -106,8 +104,7 @@ const updatePassword = async( req, res ) => {
         ok: true,
         uid: id,
         name: Dbusuario.name,
-        token,
-        access: Dbusuario.role
+        token
     })
 }
 
@@ -132,13 +129,13 @@ const loginUser =  async (req,res = response) => {
         }
 
         //generar jwt
-        const token = await generarJWT( usuario.id, usuario.name, usuario.role );
+        const token = await generarJWT( usuario.id, usuario.name );
+        console.log(token);
+        console.log("token => ",token);
         return res.json({
-            ok: true,
-            uid: usuario.id,
-            name: usuario.name,
+            user: usuario,
             token,
-            access: usuario.role
+      
         })
     } catch (error) {
         return res.status(500).json({
@@ -149,14 +146,14 @@ const loginUser =  async (req,res = response) => {
 }
 
 const renewToken = async (req,res = response) => {
-    const { uid, name, role } = req;
-    const token = await generarJWT( uid, name, role );
+    const { uid, name } = req;
+    const token = await generarJWT( uid, name );
+    const usuario = await Usuario.findById(uid);
+
+    console.log(usuario);
     return res.json({
-        ok: true,
-        uid,
-        name,
-        token,
-        access: role,
+        user:usuario,
+        token
     })
 }
 
