@@ -8,9 +8,6 @@ const UsuarioSchema = Schema({
     image: {
         type: String,
     },
-    phone: {
-        type: String,
-    },
     email: {
         type:String,
         required: true,
@@ -27,6 +24,23 @@ const UsuarioSchema = Schema({
         type: String,
         required: true
     },
+    address: {
+        province: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        streetaddress: {
+            type: String,
+        },
+        neighborhood: {
+            type: String,
+        },        
+        phone_number: {
+            type: String,
+        }
+    }
 })
 
 module.exports = model('Usuario',UsuarioSchema);
