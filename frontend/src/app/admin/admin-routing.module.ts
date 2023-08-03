@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductosComponent } from './productos/productos.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
 
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
       { path: 'productos', component: ProductosComponent },
-      { path: '**', redirectTo: 'productos' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: '**', redirectTo: 'dashboard' },
     ]
   }
 
