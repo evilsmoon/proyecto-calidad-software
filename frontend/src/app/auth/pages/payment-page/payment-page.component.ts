@@ -1,38 +1,62 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { PatitoService } from 'src/app/services/patito.service';
+import { Component, HostListener, OnInit, computed } from '@angular/core';
+import { Product, ProductCart } from 'src/app/interfaces/product.interfaces';
+import { ProductService } from 'src/app/services/product.service';
+import { MetricsService } from 'src/app/services/metrics.service';
+import { SuccessBillingTime } from 'src/app/interfaces/metric.interfaces';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   templateUrl: './payment-page.component.html',
   styleUrls: ['./payment-page.component.scss']
 })
 export class PaymentPageComponent implements OnInit {
-  products: any[] = [];
+  products: ProductCart[] = [];
   startTime: Date | null = null;
   timerInterval: any;
+  totalQuantity: number = 0; 
+  totalPrice: number = 0; 
 
+  visible: boolean = true;
+  public user = computed(() => this.authServ.currentUser() );
+
+  
   constructor(
-    private fb: FormBuilder,
-    private patitoServ:PatitoService,
+    private fb            : FormBuilder,
+    private productoServ  : ProductService,
+    private metricServ    : MetricsService,
+    private authServ      : AuthService,
     ) { }
 
   public debitCardForm: FormGroup = this.fb.group(
     {
-      CARDNUMBER: ['', [Validators.required, Validators.pattern(/^\d{16}$/)]],
-      CARDNAMECARD: ['', [Validators.required ],],
-      CARDEXPIRATIONDATE: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{4}$/)]],
-      CARDSECURITYCODE: ['', [Validators.required, Validators.pattern(/^\d{3}$/)]]
+      CARDNUMBER         : ['', [Validators.required, Validators.pattern(/^\d{16}$/)]],
+      CARDNAMECARD       : ['', [Validators.required ],],
+      CARDEXPIRATIONDATE : ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{4}$/)]],
+      CARDSECURITYCODE   : ['', [Validators.required, Validators.pattern(/^\d{3}$/)]]
     },
   );
+  public shippingAddressForm: FormGroup = this.fb.group(
+    {
+      PROVINCE            : ['', Validators.required],
+      CITY                : ['', Validators.required],
+      STREETADDRESS       : ['', Validators.required],
+      NEIGHBORHOOD        : ['', Validators.required],
+      PHONENUMBER         : ['', Validators.required]
+    },
+  );
+
 
   ngOnInit(): void {
     this.startTime = new Date();
     this.timerInterval = setInterval(() => {}, 1000);
 
-    this.patitoServ.get().subscribe(
-      resp=>( this.products =resp.slice(0,2))
-    )
+    this.products = this.productoServ.getShoppingCart();
+    this.calculateTotalQuantity();
+    this.calculateTotalPrice();
+  
   }
+
   ngOnDestroy() {
     clearInterval(this.timerInterval);
   }
@@ -51,11 +75,28 @@ export class PaymentPageComponent implements OnInit {
   handlePayment(){
     console.log(this.getTimeElapsed());
     clearInterval(this.timerInterval)
+
+    if (this.user() !== null) {
+      const data : SuccessBillingTime = {
+        user_id  : this.user()!._id,
+        time     : this.getTimeElapsed(),
+      } 
+      
+      this.metricServ.postSuccessBillingTime(data).subscribe(resp=>{
+        console.log(resp);
+      })
+    }else{
+      console.log('data');
+    }
   }
-  @HostListener('window:beforeunload', ['$event'])
+/*   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any) {
     $event.returnValue = true;
-  }
+  } */
+
+  showDialog() {
+    this.visible = true;
+}
 
 
   generateNumbersArray(max: number): number[] {
@@ -202,4 +243,30 @@ export class PaymentPageComponent implements OnInit {
   isValidField(field: string) {
     return this.debitCardForm.controls[field].valid && (this.debitCardForm.controls[field].touched || this.debitCardForm.controls[field].pristine || this.debitCardForm.controls[field].dirty);
   }
+  calculateTotalQuantity() {
+    this.totalQuantity = this.products.reduce((total, product) => total + product.currentQty, 0);
+  }
+  calculateTotalPrice() {
+    this.totalPrice = this.products.reduce((total, product) => {
+      return total + (product.currentPrice * product.currentQty);
+    }, 0);
+  }
+
+
+  onChangeQuantity(event: any,product: ProductCart, ) {
+
+    const indexOfObject = this.products.findIndex((element) => {
+      return element._id === product._id;
+    });
+    this.products[indexOfObject].currentQty = parseInt(event.target.value);
+    this.calculateTotalQuantity()
+    this.calculateTotalPrice()
+  }
+  
+  removeProduct(product:ProductCart){
+    this.productoServ.removeProduto(product);
+    this.calculateTotalQuantity()
+    this.calculateTotalPrice()
+  }
+
 }

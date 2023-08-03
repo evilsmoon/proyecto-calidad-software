@@ -20,6 +20,10 @@ export class PatitoService {
     return this.http.get(url);
   }
 
+/*   generateOrder():Observable<any>{
+    const url = `${this.baseUrl}`
+  } */
+
 /*   url: string = 'http://localhost:3000/api';
   constructor(private http: HttpClient) {}
 

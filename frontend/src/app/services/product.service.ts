@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product.model';
+import { ProductCart } from '../interfaces/product.interfaces';
 import { BehaviorSubject } from 'rxjs';
-import { MessageService } from 'primeng/api';
+
 
 @Injectable({
     providedIn: 'root'
@@ -9,8 +9,8 @@ import { MessageService } from 'primeng/api';
 export class ProductService {
 
     
-    private myShoppingCart: Product[] = [];
-    private myCart = new BehaviorSubject<Product[]>([]);
+    private myShoppingCart: ProductCart[] = [];
+    private myCart = new BehaviorSubject<ProductCart[]>([]);
     public myCart$ = this.myCart.asObservable();
 
     constructor(){
@@ -21,7 +21,7 @@ export class ProductService {
       }
     }
     
-    addProducto(producto: Product): boolean {
+    addProducto(producto: ProductCart): boolean {
       // Verificar si el producto ya existe en el carrito
       const productoExistente = this.myShoppingCart.find(item => item._id === producto._id);
   
@@ -39,7 +39,7 @@ export class ProductService {
       return true;
   }
     
-    removeProduto(producto: Product  ){
+    removeProduto(producto: ProductCart  ){
       const indexOfObject = this.myShoppingCart.findIndex((element) => {
         return element._id === producto._id;
       });

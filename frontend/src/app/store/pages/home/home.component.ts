@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatitoService } from 'src/app/services/patito.service';
 import { ProductService } from 'src/app/services/product.service';
 import { MessageService } from 'primeng/api';
+import { Product, ProductCart } from 'src/app/interfaces/product.interfaces';
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -9,7 +10,7 @@ import { MessageService } from 'primeng/api';
 })
 export class HomeComponent implements OnInit {
   layout: string = 'list';
-  productos: any[] = [];
+  productos: Product[] = [];
 
   responsiveOptions: any[] = [
     {
@@ -39,12 +40,16 @@ export class HomeComponent implements OnInit {
     this.patitoServ.get().subscribe((resp) => (this.productos = resp));
   }
 
-  showSuccess() {
+  addMyCart(producto: Product) {
 
-  }
 
-  addMyCart(producto: any) {
-    const resp = this.productoServ.addProducto(producto);
+    let product:ProductCart ={
+      ...producto,
+      currentPrice:producto.price,
+      currentQty:1
+    }   
+
+    const resp = this.productoServ.addProducto(product);
 
     if (resp) {
       this.messageService.add({

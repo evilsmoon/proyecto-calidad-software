@@ -150,7 +150,8 @@ const renewToken = async (req,res = response) => {
     const token = await generarJWT( uid, name );
     const usuario = await Usuario.findById(uid);
 
-    console.log(usuario);
+    console.log("==> token",token);
+    console.log("==> usuario",usuario);
     return res.json({
         user:usuario,
         token

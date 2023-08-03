@@ -1,166 +1,198 @@
-<app-navbar />
-
 <section class="py-4 py-md-5 mx-0 mt-5" style="background-color: #eaeded">
-    <div class="container-fluid">
-        <div class="w-100 mx-4 my-2 ">
-            <h4 class="text-red-600 text-left fs-4 fw-medium">1 Choose a shipping address</h4>
-            <div class="card mx-4 shadow-4">
-                <div class="card-header bg-white">
-                    <h6 class="card-title fs-5 fw-semibold text-black">Your address </h6>
-                </div>
-                <div class="card-body">
-                    <div class="form-check alert bg-yellow-100">
-                        <input class="form-check-input ml-2" type="radio" name="flexRadioDefault"
-                            id="flexRadioDefault1">
-                        <label class="form-check-label ml-2 fw-bold text-black" for="flexRadioDefault1">
-                            Gabriel Morales <span class="fw-normal text-black">Calle Hugo Ortiz,
-                                Casa,Quito,Pichincha</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button type="button" class=" my-2 btn bg-yellow-300 text-center rounded  mt-2 shadow">Use this
-                        address</button>
-                </div>
-            </div>
+  <div class="container">
+    <div class="w-100 mx-4 my-4">
+      <h4 class="text-red-600 text-left fs-4 fw-medium">
+        1 Choose a shipping address
+      </h4>
+      <div class="card mx-4 shadow-4">
+        <div class="card-header bg-white">
+          <h6 class="card-title fs-5 fw-semibold text-black">Your address</h6>
         </div>
-        <div class="w-100 mx-4 my-2 ">
-            <h4 class="text-red-600 text-left fs-4 fw-medium">2 Payment Method</h4>
-            <div class="card mx-4 shadow-4">
-                <div class="card-header bg-white ">
-                    <h6 class="card-title fs-5 fw-semibold text-black">Debit card</h6>
-                </div>
-                <div class="card-body">
-                    <form [formGroup]="debitCardForm">
-                        <div class="mb-3 row">
-                            <label for="staticEmail"
-                                class="col-sm-2 col-form-label text-black fw-semibold text-right">Card
-                                number</label>
-                            <div class="col-sm-3">
-                                <input 
-                                    type="text" 
-                                    formControlName="CARDNUMBER" 
-                                    (input)="onCardNumberInput()"
-                                    [ngClass]="{
-                                        'is-valid': isCardNumberValid()
-                                      }"
-                                    mask="XXXX-XXXX-XXXX-XXXX" maxlength="19"
-                                    class="form-control mb-1 border border-3 shadow-2" id="cardnumbeer">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="staticEmail"
-                                class="col-sm-2 col-form-label text-black fw-semibold text-right">Name
-                                on card</label>
-                            <div class="col-sm-3">
-                                <input type="text" 
-                                    formControlName="CARDNAMECARD"
-                                    [ngClass]="{
-                                        'is-valid': isValidField('CARDNAMECARD')
-                                      }"
-                                    class="form-control mb-1 border border-3 shadow-2" id="cardnumbeer">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="staticEmail"
-                                class="col-sm-2 col-form-label text-black fw-semibold text-right">Expiration
-                                date</label>
-                            <div class="col-sm-3">
-                                <input type="text" 
-                                    formControlName="CARDEXPIRATIONDATE" 
-                                    (input)="onCardExpirationDateInput()"
-                                    [ngClass]="{
+        <div class="card-body">
+          <div class="form-check alert bg-yellow-100">
+            <input class="form-check-input ml-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+            <label class="form-check-label ml-2 fw-bold text-black" for="flexRadioDefault1">
+              Gabriel Morales
+              <span class="fw-normal text-black ">Calle Hugo Ortiz, Casa,Quito,Pichincha</span>
+            </label>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="my-2 btn bg-yellow-300 text-center fw-semibold rounded mt-2 shadow"
+            (click)="showDialog()">
+            Add address
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 
+      formulario dialog
+     -->
+    <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+      <ng-template pTemplate="header" >
+        <span class="fs-4 fw-bold">Enter a shipping address</span>
+      </ng-template>
+      <form >
+        <div class="mb-3">
+          <label for="stateProvinceRegion" class="col-sm-2 col-form-label text-black fw-semibold text-left">Province</label>
+          <input type="text" id="stateProvinceRegion" class="form-control mb-1 border border-3 shadow-2 " formControlName="stateProvinceRegion">
+        </div>
+        <div class="mb-3">
+          <label for="city" class="col-sm-2 col-form-label text-black fw-semibold text-left">City</label>
+          <input type="text" id="city" class="form-control mb-1 border border-3 shadow-2 " formControlName="city">
+        </div>
+        
+        <div class="mb-3">
+          <label for="streetAddress" class="col-sm-2 col-form-label text-black fw-semibold text-left">Street address</label>
+          <input type="text" id="streetAddress" class="form-control mb-1 border border-3 shadow-2 " formControlName="streetAddress">
+        </div>
+      
+        <div class="mb-3">
+          <label for="streetAddress" class="col-sm-2 col-form-label text-black fw-semibold text-left">Neighborhood</label>
+          <input type="text" id="streetAddress" class="form-control mb-1 border border-3 shadow-2 " formControlName="streetAddress">
+        </div>
+      
+        <div class="mb-3">
+          <label for="phoneNumber" class="col-sm-2 col-form-label text-black fw-semibold text-left">Phone number</label>
+          <input type="text" id="phoneNumber" class="form-control mb-1 border border-3 shadow-2 " formControlName="phoneNumber">
+        </div>
+      
+
+      
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="visible = false" label="Ok" styleClass="p-button-text"></p-button>
+      </ng-template>
+    </form>
+    </p-dialog>
+    <!-- 
+      end formulario dialog
+     -->
+    <div class="w-100 mx-4 my-2">
+      <h4 class="text-red-600 text-left fs-4 fw-medium">2 Payment Method</h4>
+      <div class="card mx-4 shadow-4">
+        <div class="card-header bg-white">
+          <h6 class="card-title fs-5 fw-semibold text-black">Debit card</h6>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="debitCardForm">
+            <div class="mb-3 row">
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right">Card
+                number</label>
+              <div class="col-sm-3">
+                <input type="text" formControlName="CARDNUMBER" (input)="onCardNumberInput()" [ngClass]="{
+                    'is-valid': isCardNumberValid()
+                  }" mask="XXXX-XXXX-XXXX-XXXX" maxlength="19" class="form-control mb-1 border border-3 shadow-2"
+                  id="cardnumbeer" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right">Name on
+                card</label>
+              <div class="col-sm-3">
+                <input type="text" formControlName="CARDNAMECARD" [ngClass]="{
+                    'is-valid': isValidField('CARDNAMECARD')
+                  }" class="form-control mb-1 border border-3 shadow-2" id="cardnumbeer" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right">Expiration
+                date</label>
+              <div class="col-sm-3">
+                <input type="text" formControlName="CARDEXPIRATIONDATE" (input)="onCardExpirationDateInput()" [ngClass]="{
                                         'is-valid': isValidExpirationDate(),
-                                      }"
-                                    class="form-control mb-1 border border-3 shadow-2"
-                                    id="cardnumbeer">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="staticEmail"
-                                class="col-sm-2 col-form-label text-black fw-semibold text-right">Security Code
-                                (CVV/CVC)</label>
-                            <div class="col-sm-3">
-                                <input type="password" 
-                                    formControlName="CARDSECURITYCODE"
-                                    (input)="onCardSecurityCodeInput()"
-                                    [ngClass]="{
+                                      }" class="form-control mb-1 border border-3 shadow-2" id="cardnumbeer" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right">Security Code
+                (CVV/CVC)</label>
+              <div class="col-sm-3">
+                <input type="password" formControlName="CARDSECURITYCODE" (input)="onCardSecurityCodeInput()" [ngClass]="{
                                         'is-valid': isValidField('CARDSECURITYCODE'),
-                                      }"
-                                    maxlength="3"
-                                    class="form-control mb-1 border border-3 shadow-2" id="cardnumbeer">
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                                      }" maxlength="3" class="form-control mb-1 border border-3 shadow-2"
+                  id="cardnumbeer" />
+              </div>
+            </div>
+          </form>
+        </div>
 
-
-     <!--            <div class="card-footer flex justify-content-between">
+        <!--            <div class="card-footer flex justify-content-between">
                     <button type="button" class=" my-2 btn bg-yellow-300 text-center rounded  mt-2 shadow">Use this
                         Place Your Order and Pay</button>
                     <p class="text-red-600 text-left fs-4 fw-medium">Order total:$44.16</p>
                 </div> -->
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <div class="w-100 mx-4 my-2 ">
-            <h4 class="text-red-600 text-left fs-4 fw-medium">3 Review items and shipping</h4>
-            <div class="card mx-4 shadow-4">
-                <div class="card-body">
-                    <div class="row g-0">
-                        <div class="col-md-12 col-lg-12">
-                          <div class="pb-2">
-                            <p-dataView #dv [value]="products">
-                              <ng-template let-product pTemplate="listItem">
-            
-                                <div class="card mb-3 w-100">
-                                  <div class="row g-0">
-                                    <div class="col-2">
-                                      <img class="mt-4 img-fluid rounded-start" [src]="'assets/img/productos/' + product.image"
-                                        [alt]="product.name" />
-                                    </div>
-                                    <div class="col-10">
-                                      <div class="card-body">
-                                        <h5
-                                          class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-5 fw-medium h-2rem">
-                                          {{product.name}}</h5>
-                                        <p class="card-text text-start text-uppercase mb-2 fs-4 fw-semibold  pr-4 pl-2 mt-2"><span
-                                            class="mt-3 align-text-top" style="font-size: 1rem;">$</span>{{product.size[0].price |
-                                          number:'1.2-2'}}</p>
-                                        <p class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold  pr-4 pl-2 mt-2">Size:
-                                          <samp class="fs-6 text-uppercase fw-normal">{{product.size[0].value }}</samp></p>
-                                        <select class="form-select w-6rem shadow mb-2 rounded">
-                                          <option selected>qty</option>
-                                          <ng-container *ngFor="let qty of generateNumbersArray(product.size[0].qty)">
-                                            <option [value]="qty">qty: {{ qty }}</option>
-                                          </ng-container>
-                                        </select>
-                                        <br />
-                                        <button type="button" class="btn btn-outline-danger text-uppercase fs-6">delete</button>
-            
-                                        <!-- <p class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold  pr-4 pl-2 mt-2">{{product.tags}}</p> -->
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </ng-template>
-                            </p-dataView>
-            
+    <div class="w-100 mx-4 my-2">
+      <h4 class="text-red-600 text-left fs-4 fw-medium">
+        3 Review items and shipping
+      </h4>
+      <div class="card mx-4 shadow-4">
+        <div class="card-body">
+          <div class="row g-0">
+            <div class="col-md-12 col-lg-12">
+              <div class="pb-2">
+                <p-dataView #dv [value]="products">
+                  <ng-template let-product pTemplate="listItem">
+                    <div class="card mb-3 w-100">
+                      <div class="row g-0">
+                        <div class="col-2">
+                          <img class="mt-4 img-fluid rounded-start" [src]="'assets/img/productos/' + product.image"
+                            [alt]="product.name" />
+                        </div>
+                        <div class="col-10">
+                          <div class="card-body">
+                            <h5
+                              class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-5 fw-medium h-2rem">
+                              {{ product.name }}
+                            </h5>
+                            <p class="card-text text-start text-uppercase mb-2 fs-4 fw-semibold pr-4 pl-2 mt-2">
+                              <span class="mt-3 align-text-top" style="font-size: 1rem">$</span>{{ product.price |
+                              number : "1.2-2" }}
+                            </p>
+                            <p class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold pr-4 pl-2 mt-2">
+                              Size:
+                              <samp class="fs-6 text-uppercase fw-normal">{{
+                                product.size
+                                }}</samp>
+                            </p>
+                            <select class="form-select w-6rem shadow mb-2 rounded" [(ngModel)]="product.currentQty"
+                              (change)="onChangeQuantity($event, product)">
+                              <ng-container *ngFor="
+                                  let qty of generateNumbersArray(product.qty)
+                                ">
+                                <option [value]="qty">qty: {{ qty }}</option>
+                              </ng-container>
+                            </select>
+                            <br />
+                            <button type="button" class="btn btn-outline-danger text-uppercase fs-6"
+                              (click)="removeProduct(product)">
+                              delete
+                            </button>
+
+                            <!-- <p class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold  pr-4 pl-2 mt-2">{{product.tags}}</p> -->
                           </div>
                         </div>
                       </div>
-                </div>
-
-
-                <div class="card-footer flex justify-content-between">
-                    <button 
-                      type="button" 
-                      (click)="handlePayment()"
-                      class=" my-2 btn bg-yellow-300 text-center rounded mt-2 shadow">
-                      Use this Place Your Order and Pay</button>
-                    <p class="text-red-600 text-left fs-4 fw-medium">Order total:$44.16</p>
-                </div>
+                    </div>
+                  </ng-template>
+                </p-dataView>
+              </div>
             </div>
+          </div>
         </div>
+
+        <div class="card-footer flex justify-content-between">
+          <button type="button" (click)="handlePayment()"
+            class="my-2 btn bg-yellow-300 text-center rounded mt-2 shadow">
+            Use this Place Your Order and Pay
+          </button>
+          <p class="text-red-600 text-left fs-4 fw-medium">
+            Order total: ${{ totalPrice | number : "1.2-2" }}
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

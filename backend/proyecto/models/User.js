@@ -26,7 +26,7 @@ const UsuarioSchema = Schema({
     role: {
         type: String,
         required: true
-    }
+    },
 })
 
 module.exports = model('Usuario',UsuarioSchema);

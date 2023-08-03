@@ -2,7 +2,7 @@ import { Component, OnInit, Type } from '@angular/core';
 import { Form, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Product } from 'src/app/models/product.model';
+import { Product, ProductCart } from 'src/app/interfaces/product.interfaces';
 import { PatitoService } from 'src/app/services/patito.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit{
 
   sidebarVisible2: boolean = false;
   myStoreLength : number = 0;
-  products: Product[] = []
+  products: ProductCart[] = []
   private sub$!: Subscription;
   totalQuantity: number = 0; 
   totalPrice: number = 0; 
@@ -34,7 +34,7 @@ export class ShoppingCartComponent implements OnInit{
       this.calculateTotalPrice()
     }
 
-    removeProduct(product:Product){
+    removeProduct(product:ProductCart){
       this.productoServ.removeProduto(product);
       this.calculateTotalQuantity()
       this.calculateTotalPrice()
@@ -44,40 +44,26 @@ export class ShoppingCartComponent implements OnInit{
     }
 
     calculateTotalQuantity() {
-      this.totalQuantity = this.products.reduce((total, product) => total + product.qty, 0);
+      this.totalQuantity = this.products.reduce((total, product) => total + product.currentQty, 0);
     }
     calculateTotalPrice() {
       this.totalPrice = this.products.reduce((total, product) => {
-        console.log();
-        return total + (product.price * product.qty);
+        return total + (product.currentPrice * product.currentQty);
       }, 0);
     }
 
     navigateToPaymentPage(): void {
 
-      console.log(this.products);
-      // this.router.navigate(['/auth/payment-page'], );
+      this.router.navigate(['/auth/payment-page'], );
     }
 
     onChangeQuantity(event: any,product: Product, ) {
-      const quantity = event.target.value;
 
-      console.log(product);
       const indexOfObject = this.products.findIndex((element) => {
         return element._id === product._id;
       });
-      console.log(indexOfObject);
-      console.log(quantity);
-      this.products[indexOfObject].qty = parseInt(event.target.value);
+      this.products[indexOfObject].currentQty = parseInt(event.target.value);
       this.calculateTotalQuantity()
       this.calculateTotalPrice()
     }
-
-/*   ngOnInit(): void {
-    console.log("ngOnInit");
-
-    console.log(this.productoServ.getShoppingCart());
-    this.products = this.productoServ.getShoppingCart()
-  }
- */
 }
