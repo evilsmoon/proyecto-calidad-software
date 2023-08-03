@@ -8,20 +8,44 @@ const SuccessBillingTimeSchema = new Schema({
     time: { 
         type: Number,
         required: true 
+    },
+    date: {
+        year:{
+            type: String,
+            required: true
+        },
+        month:{
+            type: String,
+            required: true
+        },
+        day:{
+            type: String,
+            required: true
+        }
     }
 })
 
 const BillingTime = model('PedidosExistosos', SuccessBillingTimeSchema);
 
 const ErrorBillingSchema = new Schema({
-    date: {
-        type: Date,
-        default: Date.now,
+    user_id: {
+        type: Schema.Types.ObjectId,
+        require: true
     },
-    number_error_billings: {
-        type: Number,
-        required: true
-    }   
+    date: {
+        year:{
+            type: String,
+            required: true
+        },
+        month:{
+            type: String,
+            required: true
+        },
+        day:{
+            type: String,
+            required: true
+        }
+    }
 })
 
 const ErrorBilling = model('PedidosCancelados', ErrorBillingSchema);
@@ -36,8 +60,18 @@ const OnlineHelpSchema = new Schema({
         required: true
     },
     date: {
-        type: Date,
-        default: Date.now,
+        year:{
+            type: String,
+            required: true
+        },
+        month:{
+            type: String,
+            required: true
+        },
+        day:{
+            type: String,
+            required: true
+        }
     }
 })
 

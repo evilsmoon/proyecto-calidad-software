@@ -2,3 +2,4 @@
 node_modules/
 consultas_hechas.json
 mongo/
+.vscode/

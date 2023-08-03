@@ -24,6 +24,7 @@ app.use(express.urlencoded({extended: '50mb'}));
 app.use('/api/user',require('./routes/user.routes'));
 app.use('/api/product',require('./routes/product.routes'));
 app.use('/api/order',require('./routes/order.routes'));
+app.use('/api/metrics',require('./routes/metrics.routes'));
 
 //rutas de angular
 // app.get('*', ( req, res ) => {
