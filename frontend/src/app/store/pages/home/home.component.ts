@@ -32,8 +32,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.patitoServ.get().subscribe((resp) => {
-      this.filterProducts =resp;
-      this.productos =resp;
+      this.filterProducts = resp;
+      console.log(this.filterProducts);
+      this.productos = resp;
+      console.log(this.productos);
     });
   }
 
@@ -63,21 +65,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  selectedSizes: string[] = [];
+
   filterProducts() {
-    const selectedSizes: string[] = [];
-    const checkboxes = document.querySelectorAll('.form-check-input[type="checkbox"]:checked');
-
-    checkboxes.forEach((checkbox: any) => {
-      selectedSizes.push(checkbox.id.replace('formCheck-', ''));
-    });
-
-    if (selectedSizes.length === 0) {
+    // Filtrar productos según las tallas seleccionadas
+    if (this.selectedSizes.length === 0) {
+      // Si no se selecciona ninguna talla, mostrar todos los productos
       this.filteredProducts = this.productos;
     } else {
-      this.filteredProducts = this.productos.filter((product) => selectedSizes.includes(product.size));
+      this.filteredProducts = this.productos.filter(product =>
+        this.selectedSizes.includes(product.size)
+      );
     }
   }
-
   updatePrice(item: any) {
     console.log(item);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, computed } from '@angular/core';
+import { Component, OnInit, HostListener , inject, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
@@ -74,6 +74,29 @@ getAuthStatus():boolean{
         this.myStoreLength =  products.length;
       });
       this.flag = this.translate.getBrowserLang() || 'en';
+      
+  
+  }
+
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyPress(event: KeyboardEvent) {
+    if (event.key === 'c') {
+      // Lógica que deseas ejecutar cuando se presione la tecla "c"
+      console.log('Tecla "c" presionada');
+      this.router.navigate(['/auth/shopping-cart']);
+    }
+
+    if (event.key === 'i') {
+      // Lógica que deseas ejecutar cuando se presione la tecla "c"
+      console.log('Tecla "c" presionada');
+      this.router.navigate(['/']);
+    }
+    if (event.key === 'p') {
+      // Lógica que deseas ejecutar cuando se presione la tecla "c"
+      console.log('Tecla "c" presionada');
+      this.router.navigate(['/auth/payment-page']);
+    }
   }
   
 /*   ngOnDestroy(): void {

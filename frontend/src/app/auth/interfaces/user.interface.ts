@@ -19,4 +19,11 @@ export interface User {
   password: string;
   gender:   string;
   role:     string;
+  address: {
+    province :string;
+    city :string;
+    streetaddress :string;
+    neighborhood :string;
+    phone_number :string;
+  }
 }

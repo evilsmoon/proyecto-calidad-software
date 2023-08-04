@@ -91,27 +91,11 @@
             </div>
             <div class="my-4">
                 <h3 class="border-bottom border-black text-uppercase text-black fw-light">Size</h3>
-                <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" id="formCheck-XS" (change)="filterProducts()">
-                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-XS">{{ 'XS'| translate}}</label>
+                <div class="form-check ms-3" *ngFor="let size of ['XS', 'S', 'M', 'L', 'XL']">
+                  <input class="form-check-input" type="checkbox" [id]="'formCheck-' + size" (change)="filterProducts()">
+                  <label class="form-check-label fs-6 fw-lighter" [for]="'formCheck-' + size">{{ size | translate }}</label>
                 </div>
-                <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" id="formCheck-S" (change)="filterProducts()">
-                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-S">{{ 'S'| translate}}</label>
-                </div>
-                <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" id="formCheck-M" (change)="filterProducts()">
-                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-M">{{ 'M'| translate}}</label>
-                </div>
-                <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" id="formCheck-L" (change)="filterProducts()">
-                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-L">{{ 'L'| translate}}</label>
-                </div>
-                <div class="form-check ms-3">
-                    <input class="form-check-input" type="checkbox" id="formCheck-XL" (change)="filterProducts()">
-                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-XL">{{ 'XL'| translate}}</label>
-                </div>
-            </div>
+              </div>
           </div>
           <div class="d-md-none h-20rem bg-red-200"></div>
         </div>

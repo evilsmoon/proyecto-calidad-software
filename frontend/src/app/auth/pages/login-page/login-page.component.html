@@ -5,7 +5,7 @@
             <div class="col-md-6 text-center"><img class="img-fluid w-100" src="assets/img/illustrations/login.svg">
             </div>
             <div class="col-md-5 col-xl-4 text-center text-md-start">
-                <h2 class="display-6 fw-bold mb-5" i18n><span class="underline pb-1">Login<br></span></h2>
+                <h2 class="display-6 fw-bold mb-5" i18n><span class="underline pb-1">{{'LogIn'| translate}}<br></span></h2>
                 <form autocomplete="off"
                       [formGroup]="myForm"
                       (ngSubmit)="login()"
@@ -14,18 +14,18 @@
                         <input class="shadow form-control" 
                                type="email" 
                                formControlName="email"
-                               placeholder="Email" i18n>
+                               [placeholder]="'email'|translate" >
                     </div>
                     <div class="mb-3">
                         <input class="shadow form-control" 
                                 type="password" 
                                 formControlName="password" 
-                                placeholder="Password" i18n>
+                                [placeholder]="'password'|translate">
                     </div>
                     <div class="mb-5">
                         <button class="btn btn-primary shadow" 
                                 [disabled]="myForm.invalid"
-                                type="submit" i18n>Log in</button>
+                                type="submit" >{{'LogIn'| translate}}</button>
                     </div>
                 </form>
             </div>

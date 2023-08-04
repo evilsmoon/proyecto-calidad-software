@@ -49,6 +49,13 @@ export class ProductService {
         sessionStorage.setItem('carrito', JSON.stringify(this.myShoppingCart));
       }
     }
+
+    removeAll(){
+
+      this.myShoppingCart = [];
+      this.myCart.next(this.myShoppingCart );
+      sessionStorage.setItem('carrito', JSON.stringify(this.myShoppingCart));
+    }
     getShoppingCart() {
     return this.myShoppingCart;
     }

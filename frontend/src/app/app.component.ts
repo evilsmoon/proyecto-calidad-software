@@ -10,8 +10,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // private authService = inject( AuthService );
-  // private router = inject( Router );
+  private authService = inject( AuthService );
+  private router = inject( Router );
 
   constructor(
     public translate: TranslateService
@@ -27,36 +27,39 @@ export class AppComponent {
   
 
 
-  // public finishedAuthCheck = computed<boolean>( () => {
-  //   console.log(this.authService.authStatus() )
-  //   if ( this.authService.authStatus() === AuthStatus.checking ) {
-  //     return false;
-  //   }
+  public finishedAuthCheck = computed<boolean>( () => {
+    console.log(this.authService.authStatus() )
+    if ( this.authService.authStatus() === AuthStatus.checking ) {
+      return false;
+    }
 
-  //   return true;
-  // });
-
-
-  // public authStatusChangedEffect = effect(() => {
-
-  //   switch( this.authService.authStatus() ) {
-
-  //     case AuthStatus.checking:
-  //       return;
-
-  //     case AuthStatus.authenticated:
-  //       this.router.navigateByUrl('/');
-  //       return;
-
-  //     case AuthStatus.notAuthenticated:
-  //       this.router.navigateByUrl('/auth/login');
-  //       return;
-
-  //   }
+    return true;
+  });
 
 
+  public authStatusChangedEffect = effect(() => {
+
+    switch( this.authService.authStatus() ) {
+
+      case AuthStatus.checking:
+        return;
+
+      case AuthStatus.authenticated:
+        this.router.navigateByUrl('/');
+        return;
+
+      case AuthStatus.notAuthenticated:
+        this.router.navigateByUrl('/auth/login');
+        return;
+      case AuthStatus.authenticatedAdmin:
+        this.router.navigateByUrl('/admin/productos');
+        return;
+
+    }
 
 
-  // });
+
+
+  });
 
 }

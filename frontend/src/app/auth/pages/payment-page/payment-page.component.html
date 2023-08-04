@@ -12,17 +12,17 @@
           <div class="form-check alert bg-yellow-100">
             <input class="form-check-input ml-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
             <label class="form-check-label ml-2 fw-bold text-black" for="flexRadioDefault1">
-              Gabriel Morales
-              <span class="fw-normal text-black" >Calle Hugo Ortiz, Casa,Quito,Pichincha</span>
+              {{user()?.name}}
+              <span class="fw-normal text-black" >{{user()?.address?.streetaddress}}, {{user()?.address?.neighborhood}},{{user()?.address?.city}},{{user()?.address?.province}}</span>
             </label>
           </div>
         </div>
-        <div class="card-footer">
+<!--         <div class="card-footer">
           <button type="button" class="my-2 btn bg-yellow-300 text-center fw-semibold rounded mt-2 shadow"
             (click)="showDialog()">
            {{'Addaddress' |translate}}
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- 

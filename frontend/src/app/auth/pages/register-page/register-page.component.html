@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-5 col-xl-4 text-center text-md-start">
         <h2 class="display-6 fw-bold mb-5">
-          <span class="underline pb-1"><strong i18n>Sign up</strong></span>
+          <span class="underline pb-1"><strong > {{'Signup' |translate}}</strong></span>
         </h2>
         <form method="post" data-bs-theme="light">
           <div class="mb-3">
@@ -17,8 +17,9 @@
               class="shadow-sm form-control"
               type="email"
               name="email"
-              placeholder="Email"
-              i18n
+              [placeholder]="'email'|translate"
+              required
+              
             />
           </div>
           <div class="mb-3">
@@ -26,29 +27,21 @@
               class="shadow-sm form-control"
               type="password"
               name="password"
-              placeholder="Password"
-              i18n
-            />
-          </div>
-          <div class="mb-3">
-            <input
-              class="shadow-sm form-control"
-              type="password"
-              name="password_repeat"
-              placeholder="Repeat Password"
-              i18n
+              [placeholder]="'password'|translate"
+              required
+              
             />
           </div>
           <div class="mb-5">
-            <button class="btn btn-primary shadow" type="submit" i18n>
-              Create account
+            <button class="btn btn-primary shadow" type="submit" >
+              {{'Createaccount'|translate}}
             </button>
           </div>
         </form>
-        <p class="text-muted" i18n >
-          Have an account?
+        <p class="text-muted"  >
+          {{'Haveanaccount?'|translate}}
           <a href="/auth/login"
-            >Log in&nbsp;<svg
+            >{{ 'Login' | translate}}&nbsp;<svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
               height="1em"

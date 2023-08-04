@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, HostListener, OnInit, computed } from '@angular/core';
 import { Product, ProductCart } from 'src/app/interfaces/product.interfaces';
 import { ProductService } from 'src/app/services/product.service';
@@ -89,7 +89,31 @@ export class PaymentPageComponent implements OnInit {
       };
 
       this.metricServ.postSuccessBillingTime(data).subscribe((resp) => {
-        console.log(resp);
+        Swal.fire({
+          title: 'Seguro que desea realizar la compra?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Compra exitosamente!',
+              'Se a realizado su compra exitosamente',
+              'success'
+            )
+
+            this.productoServ.removeAll()
+            
+          }else{
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
+        })
       });
     } else {
       console.log('data');

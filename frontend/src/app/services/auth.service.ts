@@ -32,7 +32,14 @@ export class AuthService {
     console.log(user);
     console.log(token);
     this._currentUser.set(user);
-    this._authStatus.set(AuthStatus.authenticated);
+
+    console.log();
+
+    if(user.role ==='USER'){
+      this._authStatus.set(AuthStatus.authenticated);
+    }else{
+      this._authStatus.set(AuthStatus.authenticatedAdmin);
+    }
     localStorage.setItem('token', token);
 
     return true;

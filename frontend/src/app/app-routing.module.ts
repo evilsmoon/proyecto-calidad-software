@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { isAuthenticatedGuard } from './auth/guards/is-authenticated.guard';
+import { isAuthenticatedAdmin } from './auth/guards';
 
 const routes: Routes = [
   {
@@ -13,7 +13,8 @@ const routes: Routes = [
   },
   {
     path:'admin',
-    loadChildren: ()=> import('./admin/admin.module').then(m => m.AdminModule)
+    loadChildren: ()=> import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate:[isAuthenticatedAdmin]
   },
   {
     path: '**',
