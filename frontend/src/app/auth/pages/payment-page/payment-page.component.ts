@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { MetricsService } from 'src/app/services/metrics.service';
 import { SuccessBillingTime } from 'src/app/interfaces/metric.interfaces';
 import { AuthService } from 'src/app/services/auth.service';
+import * as moment from 'moment';
 
 @Component({
   templateUrl: './payment-page.component.html',
@@ -80,6 +81,11 @@ export class PaymentPageComponent implements OnInit {
       const data : SuccessBillingTime = {
         user_id  : this.user()!._id,
         time     : this.getTimeElapsed(),
+        date     : {
+          day : `${moment().date()}`,
+          month : `${moment().month()+1}`,
+          year : `${moment().year()}`
+        }
       } 
       
       this.metricServ.postSuccessBillingTime(data).subscribe(resp=>{

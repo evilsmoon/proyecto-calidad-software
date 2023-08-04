@@ -13,8 +13,19 @@ export class MetricsService {
 
 
   postSuccessBillingTime(data :SuccessBillingTime){
-    const url = `${this.baseUrl}/`
-    return this.http.post(url,data)
+    const url = `${this.baseUrl}/metrics/billingtime`;
+    return this.http.post(url,data);
+  }
+
+  postErrorBilling(data:any){
+
+    const url = `${this.baseUrl}/metrics/errorbilling`;
+    return this.http.post(url,data);
+  }  
+  postOnlineHelp(data:any){
+
+    const url = `${this.baseUrl}/metrics/onlinehelp`;
+    return this.http.post(url,data);
   }
   
 }

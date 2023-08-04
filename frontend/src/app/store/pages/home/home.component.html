@@ -1,4 +1,3 @@
-
 <app-navbar></app-navbar>
 <main class="py-4 py-md-5 mx-0 mt-5">
     <section class="container ">
@@ -8,48 +7,71 @@
                     <div class="d-none d-md-block ">
                         <div class="my-4">
                             <h3 class="border-bottom  border-black text-uppercase text-black fw-light">Categories</h3>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1">Conjunto Dama</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1">Conjunto Caballero</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1">Conjunto Niña</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1">Conjunto Niño</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label fs-6 fw-lighter" for="formCheck-2">Tiras</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-3"><label class="form-check-label fs-6 fw-lighter" for="formCheck-3">Manga Corta</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-4"><label class="form-check-label fs-6 fw-lighter" for="formCheck-4">Manga Larga</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
+                                    i18n>Conjunto Dama</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
+                                    i18n>Conjunto Caballero</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
+                                    i18n>Conjunto Niña</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
+                                    i18n>Conjunto Niño</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-2"><label class="form-check-label fs-6 fw-lighter" for="formCheck-2"
+                                    i18n>Tiras</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-3"><label class="form-check-label fs-6 fw-lighter" for="formCheck-3"
+                                    i18n>Manga Corta</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-4"><label class="form-check-label fs-6 fw-lighter" for="formCheck-4"
+                                    i18n>Manga Larga</label></div>
                         </div>
                         <div class="my-4">
                             <h3 class="border-bottom  border-black text-uppercase text-black fw-light">Size</h3>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-5"><label class="form-check-label fs-6 fw-lighter" for="formCheck-5">XS</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-6"><label class="form-check-label fs-6 fw-lighter" for="formCheck-6">S</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label fs-6 fw-lighter" for="formCheck-7">M</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label fs-6 fw-lighter" for="formCheck-7">L</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label fs-6 fw-lighter" for="formCheck-7">XL</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-5"><label class="form-check-label fs-6 fw-lighter"
+                                    for="formCheck-5">XS</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-6"><label class="form-check-label fs-6 fw-lighter"
+                                    for="formCheck-6">S</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-7"><label class="form-check-label fs-6 fw-lighter"
+                                    for="formCheck-7">M</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-7"><label class="form-check-label fs-6 fw-lighter"
+                                    for="formCheck-7">L</label></div>
+                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
+                                    id="formCheck-7"><label class="form-check-label fs-6 fw-lighter"
+                                    for="formCheck-7">XL</label></div>
                         </div>
                     </div>
                     <div class="d-md-none h-20rem bg-red-200">
-              
+
                     </div>
                 </div>
                 <div class="col-md-10 px-2 ">
-                    <p-dataView #dv 
-                        [value]="productos"  
-                        layout="grid" 
-                        [rows]="6" 
+                    <p-dataView #dv [value]="productos" layout="grid" [rows]="6"
                         gridStyleClass="d-flex gap-2 px-2 py-4 justify-content-center align-items-center "
                         [paginator]="true">
-                        <ng-template let-product  pTemplate="gridItem" >
-                            <div class="card card-custom mx-3 my-2 gap-2 shadow-2 animate__animated animate__slideInUp" style="width: 19.5rem;">
-                                <img class="h-20rem  border-round card-img-top" [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
+                        <ng-template let-product pTemplate="gridItem">
+                            <div class="card card-custom mx-3 my-2 gap-2 shadow-2 animate__animated animate__slideInUp"
+                                style="width: 19.5rem;">
+                                <img class="h-20rem  border-round card-img-top"
+                                    [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
                                 <div class="card-body h-13rem ">
-                                    <h5 class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-6 fw-light" style="width: 19rem;height: 2.5rem;">{{product.name}}</h5>
-                                    <button class="btn active fs-6 mx-1" >
+                                    <h5 class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-6 fw-light"
+                                        style="width: 19rem;height: 2.5rem;" i18n>{{product.name}}</h5>
+                                    <button class="btn active fs-6 mx-1">
                                         {{product.size}}
                                     </button>
-                                    <p class="card-text text-start text-black fw-bold pr-4 pl-2 mt-2">${{product.price}}</p>
-                                    <button 
-                                        type="button" 
+                                    <p class="card-text text-start text-black fw-bold pr-4 pl-2 mt-2">${{product.price}}
+                                    </p>
+                                    <button type="button"
                                         class="btn btn-outline-danger text-uppercase animate__animated animate__fadeInUp"
-                                        (click)="addMyCart(product)"
-                                        style="width: 18rem;">Add to cart</button>
+                                        (click)="addMyCart(product)" style="width: 18rem;" i18n>Add to cart</button>
                                 </div>
                             </div>
                         </ng-template>
@@ -57,9 +79,9 @@
                 </div>
             </div>
         </div>
- 
+
     </section>
-    <p-toast ></p-toast>
+    <p-toast></p-toast>
 </main>
 
-<app-footer/>
+<app-footer />

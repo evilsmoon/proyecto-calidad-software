@@ -5,7 +5,7 @@
             <div class="col-md-6 text-center"><img class="img-fluid w-100" src="assets/img/illustrations/login.svg">
             </div>
             <div class="col-md-5 col-xl-4 text-center text-md-start">
-                <h2 class="display-6 fw-bold mb-5"><span class="underline pb-1"><strong>Login</strong><br></span></h2>
+                <h2 class="display-6 fw-bold mb-5" i18n><span class="underline pb-1">Login<br></span></h2>
                 <form autocomplete="off"
                       [formGroup]="myForm"
                       (ngSubmit)="login()"
@@ -14,21 +14,20 @@
                         <input class="shadow form-control" 
                                type="email" 
                                formControlName="email"
-                               placeholder="Ingrese su contraseña">
+                               placeholder="Email" i18n>
                     </div>
                     <div class="mb-3">
                         <input class="shadow form-control" 
                                 type="password" 
                                 formControlName="password" 
-                                placeholder="Password">
+                                placeholder="Password" i18n>
                     </div>
                     <div class="mb-5">
                         <button class="btn btn-primary shadow" 
                                 [disabled]="myForm.invalid"
-                                type="submit">Log in</button>
+                                type="submit" i18n>Log in</button>
                     </div>
                 </form>
-                <p class="text-muted"><a href="/auth/forgotten-password">Forgot your password?</a></p>
             </div>
         </div>
     </div>

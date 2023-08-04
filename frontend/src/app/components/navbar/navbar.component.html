@@ -3,14 +3,14 @@
 >
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" (click)="navigateToHome()"
-      ><span>Store Duck</span></a
+      ><span i18n>Store Duck</span></a
     >
     <button
       data-bs-toggle="collapse"
       class="navbar-toggler"
       data-bs-target="#navcol-1"
     >
-      <span class="visually-hidden">Toggle navigation</span
+      <span class="visually-hidden" i18n>Toggle navigation</span
       ><span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navcol-1">
@@ -63,17 +63,17 @@
           <div
             class="dropdown-menu shadow dropdown-menu-end animated--grow-in"
           >
-            <a class="dropdown-item" href="#"
+            <a class="dropdown-item" href="#" i18n
               ><i
                 class="pi pi-user fa-sm fa-fw me-2 text-gray-400"
               ></i
               >&nbsp;Profile</a
-            ><a class="dropdown-item" href="#"
+            ><a class="dropdown-item" href="#" i18n
               ><i
                 class="pi pi-wrench fa-sm fa-fw me-2 text-gray-400"
               ></i
               >&nbsp;Settings</a
-            ><a class="dropdown-item" href="#"
+            ><a class="dropdown-item" href="#" i18n
               ><i
                 class="pi pi-list fa-sm fa-fw me-2 text-gray-400"
               ></i
@@ -83,7 +83,7 @@
             <a  
               class="dropdown-item"
               type="button"
-              (click)="onLogout()"
+              (click)="onLogout()" i18n
               ><i
                
                 class="pi pi-sign-out fa-sm fa-fw me-2 text-gray-400"
