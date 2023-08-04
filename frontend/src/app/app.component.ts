@@ -29,15 +29,12 @@ export class AppComponent {
   //     case AuthStatus.checking:
   //       return;
 
-<<<<<<< HEAD
-      case AuthStatus.authenticated:
-        // this.router.navigateByUrl('/');
-        return;
-=======
+      // case AuthStatus.authenticated:
+      //   // this.router.navigateByUrl('/');
+      //   return;
   //     case AuthStatus.authenticated:
   //       this.router.navigateByUrl('/');
   //       return;
->>>>>>> f9a7f98537abdc37edb83665b810860dc6d001d2
 
   //     case AuthStatus.notAuthenticated:
   //       this.router.navigateByUrl('/auth/login');

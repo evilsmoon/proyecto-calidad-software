@@ -13,21 +13,26 @@ const {BillingTime, ErrorBilling, OnlineHelps} = require('../models/Metric');
 //     res.json(product)
 // }
 
-//Create a product
+
 const registerBillingTime = async(req,res = response) => {
     const new_billing_time = new BillingTime(req.body);
     await new_billing_time.save();
     res.json({ok: true, id: new_billing_time.id})
 }
 
-//Create a product
+const getBillingTIme = async(req,res = response) => {
+    const billingtime= await BillingTime.find(req.body);
+    res.json(billingtime)
+}
+
+
 const registerErrorBilling = async(req,res = response) => {
     const error_billing = new ErrorBilling(req.body);
     await error_billing.save();
     res.json({ok: true, id: error_billing.id})
 }
 
-//Create a product
+
 const registerOnlineHelp = async(req,res = response) => {
     const online_help = new OnlineHelps(req.body);
     await online_help.save();
@@ -36,6 +41,7 @@ const registerOnlineHelp = async(req,res = response) => {
 
 module.exports = {
     registerBillingTime,
+    getBillingTIme,
     registerErrorBilling,
     registerOnlineHelp
 }

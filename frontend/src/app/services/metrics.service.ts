@@ -16,5 +16,10 @@ export class MetricsService {
     const url = `${this.baseUrl}/`
     return this.http.post(url,data)
   }
+
+  getSuccessBillingTime(data:any){
+    const url = `${this.baseUrl}/metrics/billingtime`
+    return this.http.get(url,data)
+  }
   
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PatitoService } from 'src/app/services/patito.service';
 
 
 @Component({
@@ -10,6 +11,7 @@ export class ProductosComponent implements OnInit {
   
 
   visible: boolean = false;
+  productos: any = [];
 
   showDialog() {
       this.visible = true;
@@ -17,11 +19,16 @@ export class ProductosComponent implements OnInit {
   
   constructor(
     private fb                  : FormBuilder,
+    private patitoServ: PatitoService
   ){
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
+    this.patitoServ.get().subscribe((resp) => {
+      this.productos = resp;  
+      console.log(this.productos);
+    });
   }
 
   
