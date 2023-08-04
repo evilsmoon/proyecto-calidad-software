@@ -19,7 +19,7 @@ export class PaymentPageComponent implements OnInit {
   totalQuantity: number = 0;
   totalPrice: number = 0;
 
-  visible: boolean = true;
+  visible: boolean = false;
   public user = computed(() => this.authServ.currentUser());
 
   constructor(

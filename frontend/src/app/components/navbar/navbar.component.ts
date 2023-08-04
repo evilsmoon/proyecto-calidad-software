@@ -16,13 +16,14 @@ export class NavbarComponent implements OnInit {
   sidebarVisible2: boolean = false;
   myStoreLength : number = 0;
   private sub$!: Subscription;
-  flag:string ="en";
+  flag:string ="";
 
     constructor(
     public translate: TranslateService
   ) {
     translate.addLangs(['en', 'es',"de","fr","qu","zh"]);
     const lang = translate.getBrowserLang()
+    this.flag = lang!;
     if( (lang !== 'es') && ( lang !== 'en') ){
       translate.setDefaultLang('en');
     }
@@ -72,6 +73,7 @@ getAuthStatus():boolean{
       .subscribe(products => {
         this.myStoreLength =  products.length;
       });
+      this.flag = this.translate.getBrowserLang() || 'en';
   }
   
 /*   ngOnDestroy(): void {

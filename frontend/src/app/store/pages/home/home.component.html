@@ -1,88 +1,171 @@
 <app-navbar></app-navbar>
 <main class="py-4 py-md-5 mx-0 mt-5">
-    <section class="container ">
-        <div class="w-100 mx-4 my-2">
-            <div class="row">
-                <div class="col-md-2 px-2 py-4 animate__animated animate__fadeInLeft ">
-                    <div class="d-none d-md-block ">
-                        <div class="my-4">
-                            <h3 class="border-bottom  border-black text-uppercase text-black fw-light">{{'Categorias' | translate}} </h3>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
-                                    >{{'ConjuntoDama'|translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
-                                    >{{'ConjuntoCaballero'|translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
-                                    >{{'ConjuntoNiña'|translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-1"><label class="form-check-label fs-6 fw-lighter" for="formCheck-1"
-                                    >{{'ConjuntoNiño'|translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-2"><label class="form-check-label fs-6 fw-lighter" for="formCheck-2"
-                                    >{{ 'Tiras' | translate }}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-3"><label class="form-check-label fs-6 fw-lighter" for="formCheck-3"
-                                    >{{ 'MangaCorta' | translate }}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-4"><label class="form-check-label fs-6 fw-lighter" for="formCheck-4"
-                                    >{{ 'MangaLarga' | translate }}</label></div>
-                        </div>
-                        <div class="my-4">
-                            <h3 class="border-bottom  border-black text-uppercase text-black fw-light">Size</h3>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-5"><label class="form-check-label fs-6 fw-lighter"
-                                    for="formCheck-5">{{ 'XS'| translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-6"><label class="form-check-label fs-6 fw-lighter"
-                                    for="formCheck-6">{{ 'S'| translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-7"><label class="form-check-label fs-6 fw-lighter"
-                                    for="formCheck-7">{{ 'M'| translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-7"><label class="form-check-label fs-6 fw-lighter"
-                                    for="formCheck-7">{{ 'L'| translate}}</label></div>
-                            <div class="form-check ms-3"><input class="form-check-input" type="checkbox"
-                                    id="formCheck-7"><label class="form-check-label fs-6 fw-lighter"
-                                    for="formCheck-7">{{ 'XL'| translate}}</label></div>
-                        </div>
-                    </div>
-                    <div class="d-md-none h-20rem bg-red-200">
-
-                    </div>
+  <section class="container">
+    <div class="w-100 mx-4 my-2">
+      <div class="row">
+        <div class="col-md-2 px-2 py-4 animate__animated animate__fadeInLeft">
+          <div class="d-none d-md-block">
+            <div class="my-4">
+              <h3
+                class="border-bottom border-black text-uppercase text-black fw-light"
+              >
+                {{ "Categorias" | translate }}
+              </h3>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-1"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-1"
+                  >{{ "ConjuntoDama" | translate }}</label
+                >
+              </div>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-1"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-1"
+                  >{{ "ConjuntoCaballero" | translate }}</label
+                >
+              </div>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-1"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-1"
+                  >{{ "ConjuntoNiña" | translate }}</label
+                >
+              </div>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-1"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-1"
+                  >{{ "ConjuntoNiño" | translate }}</label
+                >
+              </div>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-2"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-2"
+                  >{{ "Tiras" | translate }}</label
+                >
+              </div>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-3"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-3"
+                  >{{ "MangaCorta" | translate }}</label
+                >
+              </div>
+              <div class="form-check ms-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="formCheck-4"
+                /><label
+                  class="form-check-label fs-6 fw-lighter"
+                  for="formCheck-4"
+                  >{{ "MangaLarga" | translate }}</label
+                >
+              </div>
+            </div>
+            <div class="my-4">
+                <h3 class="border-bottom border-black text-uppercase text-black fw-light">Size</h3>
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" id="formCheck-XS" (change)="filterProducts()">
+                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-XS">{{ 'XS'| translate}}</label>
                 </div>
-                <div class="col-md-10 px-2 ">
-                    <p-dataView #dv [value]="productos" layout="grid" [rows]="6"
-                        gridStyleClass="d-flex gap-2 px-2 py-4 justify-content-center align-items-center "
-                        [paginator]="true">
-                        <ng-template let-product pTemplate="gridItem">
-                            <div class="card card-custom mx-3 my-2 gap-2 shadow-2 animate__animated animate__slideInUp"
-                                style="width: 19.5rem;">
-                                <img class="h-20rem  border-round card-img-top"
-                                    [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
-                                <div class="card-body h-13rem ">
-                                    <h5 class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-6 fw-light"
-                                        style="width: 19rem;height: 2.5rem;" >{{product.name}}</h5>
-                                    <button class="btn active fs-6 mx-1">
-                                        {{product.size | translate}}
-                                    </button>
-                                    <p class="card-text text-start text-black fw-bold pr-4 pl-2 mt-2">${{product.price}}
-                                    </p>
-                                    <button type="button"
-                                        class="btn btn-outline-danger text-uppercase animate__animated animate__fadeInUp"
-                                        (click)="addMyCart(product)" style="width: 18rem;" >{{'AgregarCarrito' | translate}}</button>
-                                </div>
-                            </div>
-                        </ng-template>
-                    </p-dataView>
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" id="formCheck-S" (change)="filterProducts()">
+                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-S">{{ 'S'| translate}}</label>
+                </div>
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" id="formCheck-M" (change)="filterProducts()">
+                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-M">{{ 'M'| translate}}</label>
+                </div>
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" id="formCheck-L" (change)="filterProducts()">
+                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-L">{{ 'L'| translate}}</label>
+                </div>
+                <div class="form-check ms-3">
+                    <input class="form-check-input" type="checkbox" id="formCheck-XL" (change)="filterProducts()">
+                    <label class="form-check-label fs-6 fw-lighter" for="formCheck-XL">{{ 'XL'| translate}}</label>
                 </div>
             </div>
+          </div>
+          <div class="d-md-none h-20rem bg-red-200"></div>
         </div>
-
-    </section>
-    <p-toast></p-toast>
+        <div class="col-md-10 px-2">
+          <p-dataView
+            #dv
+            [value]="productos"
+            layout="grid"
+            [rows]="6"
+            gridStyleClass="d-flex gap-2 px-2 py-4 justify-content-center align-items-center "
+            [paginator]="true"
+          >
+            <ng-template let-product pTemplate="gridItem">
+              <div
+                class="card card-custom mx-3 my-2 gap-2 shadow-2 animate__animated animate__slideInUp"
+                style="width: 19.5rem"
+              >
+                <img
+                  class="h-20rem border-round card-img-top"
+                  [src]="'assets/img/productos/' + product.image"
+                  [alt]="product.name"
+                />
+                <div class="card-body h-13rem">
+                  <h5
+                    class="card-title text-start text-wrap pr-4 pl-2 text-dark text-uppercase mb-2 fs-6 fw-light"
+                    style="width: 19rem; height: 2.5rem"
+                  >
+                    {{ product.name }}
+                  </h5>
+                  <button class="btn active fs-6 mx-1">
+                    {{ product.size | translate }}
+                  </button>
+                  <p
+                    class="card-text text-start text-black fw-bold pr-4 pl-2 mt-2"
+                  >
+                    ${{ product.price }}
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger text-uppercase animate__animated animate__fadeInUp"
+                    (click)="addMyCart(product)"
+                    style="width: 18rem"
+                  >
+                    {{ "AgregarCarrito" | translate }}
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </p-dataView>
+        </div>
+      </div>
+    </div>
+  </section>
+  <p-toast></p-toast>
 </main>
 
 <app-footer />
-

@@ -39,7 +39,8 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           },
           "configurations": {
@@ -110,7 +111,8 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.scss"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           }
         }

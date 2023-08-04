@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginPageComponent ,},
       { path: 'register', component: RegisterPageComponent, },
-      { path: 'shopping-cart', component: ShoppingCartComponent ,canActivate:[isAuthenticatedGuard]},
+      { path: 'shopping-cart', component: ShoppingCartComponent ,},
       { path: 'payment-page', component: PaymentPageComponent,canActivate:[isAuthenticatedGuard] },
       { path: '**', redirectTo: 'login' },
     ]

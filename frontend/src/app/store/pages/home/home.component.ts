@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   layout: string = 'list';
   productos: Product[] = [];
 
+  filteredProducts: Product[] = [];
 
   constructor(
     private productoServ: ProductService,
@@ -30,7 +31,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.patitoServ.get().subscribe((resp) => (this.productos = resp));
+    this.patitoServ.get().subscribe((resp) => {
+      this.filterProducts =resp;
+      this.productos =resp;
+    });
   }
 
   addMyCart(producto: Product) {
@@ -58,6 +62,22 @@ export class HomeComponent implements OnInit {
       });
     }
   }
+
+  filterProducts() {
+    const selectedSizes: string[] = [];
+    const checkboxes = document.querySelectorAll('.form-check-input[type="checkbox"]:checked');
+
+    checkboxes.forEach((checkbox: any) => {
+      selectedSizes.push(checkbox.id.replace('formCheck-', ''));
+    });
+
+    if (selectedSizes.length === 0) {
+      this.filteredProducts = this.productos;
+    } else {
+      this.filteredProducts = this.productos.filter((product) => selectedSizes.includes(product.size));
+    }
+  }
+
   updatePrice(item: any) {
     console.log(item);
   }

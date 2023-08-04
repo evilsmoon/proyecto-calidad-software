@@ -1,1 +1,25 @@
-<p>dashboard works!</p>
+<div class="p-3" >
+    <div class="row">
+        <div class="fs-1 text-center"> Métricas</div>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="row">
+            <div class="fs-3 text-center"> Compras realizadas con exito en el mes </div>
+        </div>
+        <!-- <div class="col-2">
+            <div class="fs-3 text-center"> Controles </div>
+            <hr />
+        </div> -->
+        <div class="col-10">
+            <div class="card p-5">
+                <p-chart type="bar" [data]="basicData" [options]="basicOptions" [responsive]="true"></p-chart>
+            </div>
+            <div class="card p-5">
+
+                <div class="fs-3 text-center">Promedio del tiempo en relizar la compra</div>
+                <p-knob [(ngModel)]="promedioTiempo"></p-knob>
+            </div>
+        </div>
+    </div>
+
+</div>

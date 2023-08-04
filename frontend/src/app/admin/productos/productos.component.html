@@ -1,6 +1,6 @@
 <div class="container-lg">
 
-    <div class="row bg-danger my-2 d-flex justify-content-end">
+    <div class="row my-2 d-flex justify-content-end">
         <div class="col-auto">
             <a type="button" class="btn btn-primary rounded text-center align-items-center fs-6"
                 (click)="showDialog()"><i class="pi pi-plus p-1"></i>&nbsp; Agregar</a>
@@ -37,6 +37,45 @@
     </div>
 
     <div class="card">
-
+        <p-table
+            [value]="productos"
+            [paginator]="true"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10, 25, 50]"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:30%">Producto</th>
+                    <th style="width:25%">Nombre</th>
+                    <th style="width:10%">Precio</th>
+                    <th style="width:10%">Talla</th>
+                    <th style="width:10%">Stock</th>
+                    <th style="width:15%">Tags</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>
+                        <!-- {{ product.image }} -->
+                        <img class="h-10rem w-10rem border-round card-img-top" [src]="'assets/img/productos/' + product.image" [alt]="product.name" />
+                    </td>
+                    
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.qty }}</td>
+                    <td>{{ product.size }}</td>
+                    <td>{{ product.tags }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+        </p-table>
     </div>
 </div>
