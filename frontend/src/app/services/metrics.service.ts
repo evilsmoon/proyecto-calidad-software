@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { SuccessBillingTime } from '../interfaces/metric.interfaces';
+import { ErrorBilling, SuccessBillingTime } from '../interfaces/metric.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class MetricsService {
     return this.http.post(url,data);
   }
 
-  postErrorBilling(data:any){
+  postErrorBilling(data:ErrorBilling){
 
     const url = `${this.baseUrl}/metrics/errorbilling`;
     return this.http.post(url,data);

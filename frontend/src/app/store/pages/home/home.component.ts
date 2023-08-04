@@ -3,6 +3,7 @@ import { PatitoService } from 'src/app/services/patito.service';
 import { ProductService } from 'src/app/services/product.service';
 import { MessageService } from 'primeng/api';
 import { Product, ProductCart } from 'src/app/interfaces/product.interfaces';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -12,31 +13,23 @@ export class HomeComponent implements OnInit {
   layout: string = 'list';
   productos: Product[] = [];
 
-  responsiveOptions: any[] = [
-    {
-      breakpoint: '1199px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '991px',
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '767px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
 
   constructor(
     private productoServ: ProductService,
     private patitoServ: PatitoService,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'es',"de","fr","qu","zh"]);
+    const lang = translate.getBrowserLang()
+    if( (lang !== 'es') && ( lang !== 'en')  && ( lang !== 'de')  && ( lang !== 'fr')  && ( lang !== 'qu')  && ( lang !== 'zh') ){
+      translate.setDefaultLang('en');
+    }
+
+  }
 
   ngOnInit(): void {
+
     this.patitoServ.get().subscribe((resp) => (this.productos = resp));
   }
 

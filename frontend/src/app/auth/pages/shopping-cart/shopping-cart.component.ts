@@ -1,6 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { Form, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { Product, ProductCart } from 'src/app/interfaces/product.interfaces';
 import { PatitoService } from 'src/app/services/patito.service';
@@ -24,8 +25,13 @@ export class ShoppingCartComponent implements OnInit{
     private patitoServ   :PatitoService,
     private router       :Router,
     private fb           :FormBuilder,
+    public translate     :TranslateService
     ) { 
-
+      translate.addLangs(['en', 'es',"de","fr","qu","zh"]);
+      const lang = translate.getBrowserLang()
+      if( (lang !== 'es') && ( lang !== 'en')  && ( lang !== 'de')  && ( lang !== 'fr')  && ( lang !== 'qu')  && ( lang !== 'zh') ){
+        translate.setDefaultLang('en');
+      }
     }
 
     ngOnInit(): void {

@@ -15,13 +15,44 @@
     </button>
     <div class="collapse navbar-collapse" id="navcol-1">
       <ul class="mx-auto"></ul>
+      <img lass="border rounded-circle img-profile mx-2" style="width: 1.5rem;height: 1.5rem;" [src]="'assets/img/flags/'+flag+'.png'">
+      <span>
+
+        <select 
+          class="form-select w-5rem mx-2"
+            #selectedLang 
+            (change)="switchLang(selectedLang.value)">
+          <option *ngFor="let language of translate.getLangs()" 
+            [value]="language"
+            [selected]="language === translate.currentLang">
+          
+            <label>{{ language }}</label>
+          </option>
+        </select>
+      </span>
+      
+<!--       <p-dropdown [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [showClear]="true" placeholder="Select a Country">
+        <ng-template pTemplate="selectedItem">
+            <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedCountry.code.toLowerCase()" style="width: 18px"/>
+                <div>{{ selectedCountry.name }}</div>
+            </div>
+        </ng-template>
+        <ng-template let-country pTemplate="item">
+            <div class="flex align-items-center gap-2">
+                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" style="width: 18px"/>
+                <div>{{ country.name }}</div>
+            </div>
+        </ng-template>
+    </p-dropdown> -->
+    
       <button
         class="btn btn-primary mx-1 shadow"
         *ngIf="!getAuthStatus()"
         (click)="navigateToRegister()"
         i18n
       >
-        Sign In
+        {{'SignIn' |  translate}}
       </button>
       <button
         class="btn btn-primary mx-1 shadow"
@@ -29,7 +60,7 @@
         (click)="navigateToLogin()"
         i18n
       >
-        Log In
+      {{ 'LogIn' |  translate}}
       </button>
 
       <button
@@ -46,50 +77,32 @@
           value="{{ myStoreLength }}"
         ></p-badge>
       </button>
-      <div class="d-sm-block topbar-divider"  *ngIf="getAuthStatus()"></div>
-      <li class="nav-item dropdown no-arrow"  *ngIf="getAuthStatus()"style="list-style-type: none;">
+      <div class="d-sm-block topbar-divider" *ngIf="getAuthStatus()"></div>
+      <li
+        class="nav-item dropdown no-arrow"
+        *ngIf="getAuthStatus()"
+        style="list-style-type: none"
+      >
         <div class="nav-item dropdown no-arrow">
           <a
             class="dropdown-toggle nav-link"
             aria-expanded="false"
             data-bs-toggle="dropdown"
             href="#"
-            ><span class="d-none d-lg-inline me-2 text-gray-600 small"
-              >{{user()?.name}}</span
+            ><span class="d-none d-lg-inline me-2 text-gray-600 small">{{
+              user()?.name
+            }}</span
             ><img
-              class="border rounded-circle img-profile"
-              src="assets/img/avatars/avatar1.jpeg"
+              class="border rounded-circle img-profile h-3rem"
+              [src]="'data:image/jpeg;base64,'+ user()?.image "
           /></a>
-          <div
-            class="dropdown-menu shadow dropdown-menu-end animated--grow-in"
-          >
+          <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
             <a class="dropdown-item" href="#" i18n
-              ><i
-                class="pi pi-user fa-sm fa-fw me-2 text-gray-400"
-              ></i
-              >&nbsp;Profile</a
-            ><a class="dropdown-item" href="#" i18n
-              ><i
-                class="pi pi-wrench fa-sm fa-fw me-2 text-gray-400"
-              ></i
-              >&nbsp;Settings</a
-            ><a class="dropdown-item" href="#" i18n
-              ><i
-                class="pi pi-list fa-sm fa-fw me-2 text-gray-400"
-              ></i
-              >&nbsp;Activity log</a
+              ><i class="pi pi-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;{{'Profile' | translate}}</a
             >
             <div class="dropdown-divider"></div>
-            <a  
-              class="dropdown-item"
-              type="button"
-              (click)="onLogout()" i18n
-              ><i
-               
-                class="pi pi-sign-out fa-sm fa-fw me-2 text-gray-400"
-        
-              ></i
-              >&nbsp;Logout</a
+            <a class="dropdown-item" type="button" (click)="onLogout()" i18n
+              ><i class="pi pi-sign-out fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;{{'Logout' | translate}}</a
             >
           </div>
         </div>

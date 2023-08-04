@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthStatus } from 'src/app/auth/interfaces';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector:'app-navbar',
@@ -15,7 +16,26 @@ export class NavbarComponent implements OnInit {
   sidebarVisible2: boolean = false;
   myStoreLength : number = 0;
   private sub$!: Subscription;
+  flag:string ="en";
+
+    constructor(
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'es',"de","fr","qu","zh"]);
+    const lang = translate.getBrowserLang()
+    if( (lang !== 'es') && ( lang !== 'en') ){
+      translate.setDefaultLang('en');
+    }
+
+  }
+
+  switchLang = (lang: string) => {
+    this.translate.use(lang)
+    this.flag = lang;
+  }
+
   
+
   public user = computed(() => this.authService.currentUser() );
 
   private authService  = inject( AuthService );

@@ -11,6 +11,8 @@ import { ComponentsModule } from '../components/components.module';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
+import {  TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,16 @@ import { PaymentPageComponent } from './pages/payment-page/payment-page.componen
     ComponentsModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    PrimeNgModule
+    PrimeNgModule,
+    TranslateModule,
+  ],
+  exports:[
+    LoginPageComponent,
+    RegisterPageComponent,
+    AuthLayoutComponent,
+    ShoppingCartComponent,
+    PaymentPageComponent,
   ]
 })
 export class AuthModule { }
+

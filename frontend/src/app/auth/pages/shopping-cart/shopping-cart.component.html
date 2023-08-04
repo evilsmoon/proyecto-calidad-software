@@ -7,7 +7,7 @@
         <div
           class="text-dark fs-2 text-left pl-1 mb-0 mt-2 mr-2 fs-1 fw-semibold bg-white border-bottom border-light-subtle" i18n
         >
-          Shopping Cart
+          {{'ShoppingCart' |translate}}
         </div>
         <div class="card-container">
           <div class="row g-0">
@@ -43,9 +43,9 @@
                             <p
                               class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold pr-4 pl-2 mt-2"
                             >
-                              Size:
+                              {{'Size:'| translate}}
                               <samp class="fs-6 text-uppercase fw-normal">{{
-                                product.size
+                                product.size | translate
                               }}</samp>
                             </p>
                             <select
@@ -58,7 +58,7 @@
                                   let qty of generateNumbersArray(product.qty)
                                 "
                               >
-                                <option [value]="qty" i18n >qty: {{ qty }}</option>
+                                <option [value]="qty">qty: {{ qty }}</option>
                               </ng-container>
                             </select>
                             <br />
@@ -67,7 +67,7 @@
                               (click)="removeProduct(product)"
                               class="btn btn-outline-danger text-uppercase fs-6" i18n
                             >
-                              delete
+                              {{'Delete' | translate}}
                             </button>
 
                             <!-- <p class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold  pr-4 pl-2 mt-2">{{product.tags}}</p> -->
@@ -84,7 +84,7 @@
         <div
           class="text-dark fs-2 text-right pl-1 mb-0 mt-2 mr-2 fs-1 fw-semibold bg-white border-top border-light-subtle" i18n
         >
-          Subtotal ({{ totalQuantity }} items): ${{
+          {{'Subtotal'|translate}}  ({{ totalQuantity }} {{'items'|translate}}): ${{
             totalPrice | number : "1.2-2"
           }}
         </div>
@@ -93,7 +93,7 @@
       <div class="card px-4 py-2 mx-0 my-4 w-25 h-25 shadow mb-1">
         <div class="card-body">
           <h4 class="text-left text-dark fs-4 fw-normal" i18n >
-            Subtotal ({{ totalQuantity }} items):
+            {{'Subtotal' | translate}} ({{ totalQuantity }} {{'items'| translate}}):
           </h4>
           <h4 class="text-left text-dark fs-4 fw-normal" i18n>
             ${{ totalPrice | number : "1.2-2" }}
@@ -102,7 +102,7 @@
             class="btn bg-yellow-300 text-center rounded w-100 mt-2 shadow"
             (click)="navigateToPaymentPage()" i18n
           >
-            Proceed to checkout
+            {{'Proceedtocheckout'|translate}}
           </button>
         </div>
       </div>

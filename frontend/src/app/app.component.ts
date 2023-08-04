@@ -2,6 +2,7 @@ import { Component, computed, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { AuthStatus } from './auth/interfaces';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,20 @@ import { AuthStatus } from './auth/interfaces';
 export class AppComponent {
   // private authService = inject( AuthService );
   // private router = inject( Router );
+
+  constructor(
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'es',"de","fr","qu","zh"]);
+    const lang = translate.getBrowserLang()
+    if( (lang !== 'es') && ( lang !== 'en') ){
+      translate.setDefaultLang('en');
+    }
+
+  }
+  
+  
+
 
   // public finishedAuthCheck = computed<boolean>( () => {
   //   console.log(this.authService.authStatus() )

@@ -1,17 +1,17 @@
 <section class="py-4 py-md-5 mx-0 mt-5" style="background-color: #eaeded">
   <div class="container">
     <div class="w-100 mx-4 my-4">
-      <h4 class="text-red-600 text-left fs-4 fw-medium" i18n>
-        1 Choose a shipping address
+      <h4 class="text-red-600 text-left fs-4 fw-medium">
+        1 {{'Chooseashippingaddress'|translate}}
       </h4>
       <div class="card mx-4 shadow-4">
         <div class="card-header bg-white">
-          <h6 class="card-title fs-5 fw-semibold text-black" i18n >Your address</h6>
+          <h6 class="card-title fs-5 fw-semibold text-black" >{{'Youraddress'| translate}}</h6>
         </div>
         <div class="card-body">
           <div class="form-check alert bg-yellow-100">
             <input class="form-check-input ml-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-            <label class="form-check-label ml-2 fw-bold text-black" for="flexRadioDefault1" i18n>
+            <label class="form-check-label ml-2 fw-bold text-black" for="flexRadioDefault1">
               Gabriel Morales
               <span class="fw-normal text-black" >Calle Hugo Ortiz, Casa,Quito,Pichincha</span>
             </label>
@@ -19,8 +19,8 @@
         </div>
         <div class="card-footer">
           <button type="button" class="my-2 btn bg-yellow-300 text-center fw-semibold rounded mt-2 shadow"
-            (click)="showDialog()" i18n>
-            Add address
+            (click)="showDialog()">
+           {{'Addaddress' |translate}}
           </button>
         </div>
       </div>
@@ -29,55 +29,59 @@
       formulario dialog
      -->
     <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+ 
       <ng-template pTemplate="header" >
-        <span class="fs-4 fw-bold" i18n>Enter a shipping address</span>
+        <span class="fs-4 fw-bold">{{'Enterashippingaddress'| translate}}</span>
       </ng-template>
       <form >
         <div class="mb-3">
-          <label for="stateProvinceRegion" class="col-sm-2 col-form-label text-black fw-semibold text-left" i18n>Province</label>
+          <label for="stateProvinceRegion" class="col-sm-2 col-form-label text-black fw-semibold text-left">{{'Province'|translate}}</label>
           <input type="text" id="stateProvinceRegion" class="form-control mb-1 border border-3 shadow-2 " formControlName="stateProvinceRegion">
         </div>
         <div class="mb-3">
-          <label for="city" class="col-sm-2 col-form-label text-black fw-semibold text-left" i18n>City</label>
+          <label for="city" class="col-sm-2 col-form-label text-black fw-semibold text-left">{{'City'|translate}}</label>
           <input type="text" id="city" class="form-control mb-1 border border-3 shadow-2 " formControlName="city">
         </div>
         
         <div class="mb-3">
-          <label for="streetAddress" class="col-sm-2 col-form-label text-black fw-semibold text-left" i18n>Street address</label>
+          <label for="streetAddress" class="col-sm-2 col-form-label text-black fw-semibold text-left">{{ 'Streetaddress' | translate}}</label>
           <input type="text" id="streetAddress" class="form-control mb-1 border border-3 shadow-2 " formControlName="streetAddress">
         </div>
       
         <div class="mb-3">
-          <label for="streetAddress" class="col-sm-2 col-form-label text-black fw-semibold text-left" i18n>Neighborhood</label>
+          <label for="streetAddress" class="col-sm-2 col-form-label text-black fw-semibold text-left">{{ 'Neighborhood' | translate}}</label>
           <input type="text" id="streetAddress" class="form-control mb-1 border border-3 shadow-2 " formControlName="streetAddress">
         </div>
       
         <div class="mb-3">
-          <label for="phoneNumber" class="col-sm-2 col-form-label text-black fw-semibold text-left" i18n >Phone number</label>
+          <label for="phoneNumber" class="col-sm-2 col-form-label text-black fw-semibold text-left" >{{ 'Phonenumber' | translate}}</label>
           <input type="text" id="phoneNumber" class="form-control mb-1 border border-3 shadow-2 " formControlName="phoneNumber">
         </div>
-      
+
+        <button class="btn btn-success ">asdasdasdad</button>
+      </form>
 
       
-      <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="visible = false" label="Guardar" styleClass="p-button-text" i18n ></p-button>
-      </ng-template>
-    </form>
+   <!--    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="visible = false"  label="Ok" styleClass="btn btn-success" >{{'City'|translate}}</p-button>
+
+
+      </ng-template> -->
+
     </p-dialog>
     <!-- 
       end formulario dialog
      -->
     <div class="w-100 mx-4 my-2">
-      <h4 class="text-red-600 text-left fs-4 fw-medium" i18n>2 Payment Method</h4>
+      <h4 class="text-red-600 text-left fs-4 fw-medium">2 {{'PaymentMethod'|translate}}</h4>
       <div class="card mx-4 shadow-4">
         <div class="card-header bg-white">
-          <h6 class="card-title fs-5 fw-semibold text-black" i18n>Debit card</h6>
+          <h6 class="card-title fs-5 fw-semibold text-black">{{'Debitcard'|translate}}</h6>
         </div>
         <div class="card-body">
           <form [formGroup]="debitCardForm">
             <div class="mb-3 row">
-              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right" i18n>Card
-                number</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right">{{'Cardnumber'|translate}}</label>
               <div class="col-sm-3">
                 <input type="text" formControlName="CARDNUMBER" (input)="onCardNumberInput()" [ngClass]="{
                     'is-valid': isCardNumberValid()
@@ -86,8 +90,7 @@
               </div>
             </div>
             <div class="mb-3 row">
-              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right" i18n >Name on
-                card</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right" >{{'Nameoncard'|translate}}</label>
               <div class="col-sm-3">
                 <input type="text" formControlName="CARDNAMECARD" [ngClass]="{
                     'is-valid': isValidField('CARDNAMECARD')
@@ -95,8 +98,7 @@
               </div>
             </div>
             <div class="mb-3 row">
-              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right" i18n>Expiration
-                date</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right">{{'Expirationdate'|translate}}</label>
               <div class="col-sm-3">
                 <input type="text" formControlName="CARDEXPIRATIONDATE" (input)="onCardExpirationDateInput()" [ngClass]="{
                                         'is-valid': isValidExpirationDate(),
@@ -104,8 +106,7 @@
               </div>
             </div>
             <div class="mb-3 row">
-              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right" i18n >Security Code
-                (CVV/CVC)</label>
+              <label for="staticEmail" class="col-sm-2 col-form-label text-black fw-semibold text-right" >{{'SecurityCode(CVV/CVC)'|translate}}</label>
               <div class="col-sm-3">
                 <input type="password" formControlName="CARDSECURITYCODE" (input)="onCardSecurityCodeInput()" [ngClass]="{
                                         'is-valid': isValidField('CARDSECURITYCODE'),
@@ -126,7 +127,7 @@
 
     <div class="w-100 mx-4 my-2">
       <h4 class="text-red-600 text-left fs-4 fw-medium">
-        3 Review items and shipping
+        3 {{'Reviewitemsandshippin' | translate}}
       </h4>
       <div class="card mx-4 shadow-4">
         <div class="card-body">
@@ -162,13 +163,13 @@
                               <ng-container *ngFor="
                                   let qty of generateNumbersArray(product.qty)
                                 ">
-                                <option [value]="qty">qty: {{ qty }}</option>
+                                <option [value]="qty">{{'qty:'|translate}} {{ qty }}</option>
                               </ng-container>
                             </select>
                             <br />
                             <button type="button" class="btn btn-outline-danger text-uppercase fs-6"
                               (click)="removeProduct(product)">
-                              delete
+                              {{'Delete'|translate}}
                             </button>
 
                             <!-- <p class="card-text text-start text-uppercase mb-2 fs-6 fw-semibold  pr-4 pl-2 mt-2">{{product.tags}}</p> -->
@@ -186,10 +187,10 @@
         <div class="card-footer flex justify-content-between">
           <button type="button" (click)="handlePayment()"
             class="my-2 btn bg-yellow-300 text-center rounded mt-2 shadow">
-            Use this Place Your Order and Pay
+           {{'UsethisPlaceYourOrderandPay' | translate}}
           </button>
           <p class="text-red-600 text-left fs-4 fw-medium">
-            Order total: ${{ totalPrice | number : "1.2-2" }}
+            {{ 'Ordertotal' | translate }}: ${{ totalPrice | number : "1.2-2" }}
           </p>
         </div>
       </div>

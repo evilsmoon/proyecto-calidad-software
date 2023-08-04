@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { FooterComponent } from './footer/footer.component';
-
+import {TranslateModule} from '@ngx-translate/core';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -11,7 +11,9 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    PrimeNgModule
+    PrimeNgModule,
+    TranslateModule,
+    
   ],
   exports: [
     NavbarComponent,

@@ -4,6 +4,11 @@ export interface SuccessBillingTime {
 
     date: Date
 }
+export interface ErrorBilling {
+    user_id   : String;
+
+    date: Date
+}
 
 export interface Date {
 
